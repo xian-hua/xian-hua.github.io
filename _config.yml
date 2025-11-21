@@ -26,8 +26,8 @@ author:
   avatar           : "kk.png"
   name             : "Xianhua Yu"
   pronouns         : # example: "she/her" 
-  bio              : #"Short biography for the left-hand sidebar"
-  location         : #"Earth"
+  bio              : "Short biography for the left-hand sidebar"
+  location         : "Earth"
   employer         : "Dongguan University of Technology"
   uri              : # URL
   email            : "yuxianhua@dgut.edu.cn"
