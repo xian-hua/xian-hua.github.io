@@ -15,11 +15,11 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
  
 Research Interests
 ======
-● Battery-free IoT 
+- Battery-free IoT 
 
-● Low-altitude Intelligent Networking 
+- Low-altitude Intelligent Networking 
 
-● Wireless AI
+- Wireless AI
 
  
 Recent News
