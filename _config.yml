@@ -23,7 +23,7 @@ repository               : "xian-hua/xian-hua.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "kk.png"
+  avatar           : "abc.png"
   name             : "Xianhua Yu"
   pronouns         : # example: "she/her"  
   bio              : "Tenure-track Associate Professor"
