@@ -243,3 +243,20 @@
     }
   }
 }
+
+/* --- Custom publication list layout --- */
+.pub-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 0.35rem 0;   /* 每条之间稍微留点间距 */
+}
+
+.pub-index {
+  min-width: 2rem;     /* 固定编号宽度，保证竖直方向对齐 */
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.pub-text {
+  flex: 1;
+}
