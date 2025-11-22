@@ -245,18 +245,33 @@
 }
 
 /* --- Custom publication list layout --- */
+/* Publications compact formatting */
 .pub-item {
   display: flex;
   align-items: flex-start;
-  margin: 0.35rem 0;   /* 每条之间稍微留点间距 */
+  margin: 0.25em 0;        /* 每一条的上下间距 */
 }
 
 .pub-index {
-  min-width: 2rem;     /* 固定编号宽度，保证竖直方向对齐 */
-  margin-right: 0.5rem;
+  flex: 0 0 2.2em;         /* 控制编号栏宽度，可自行调 */
+  text-align: right;
+  margin-right: 0.4em;
   font-weight: bold;
 }
 
 .pub-text {
   flex: 1;
+}
+
+.pub-text-inner {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: justify;     /* 两端对齐 */
+}
+
+/* 防止 citation 内 p 元素撑开间距 */
+.pub-text-inner p {
+  margin: 0;
+  padding: 0;
 }
