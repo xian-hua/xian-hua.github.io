@@ -28,7 +28,7 @@
         {% assign cit = post.citation %}
         {% assign cit = cit | replace: "X. Yu", "<u><strong>X. Yu</strong></u>" %}
         {% assign cit = cit | replace: "Xianhua Yu", "<u><strong>Xianhua Yu</strong></u>" %}
-        {{ cit | markdownify }}
+        {{ cit | markdownify | remove: '<p>' | remove: '</p>' }}
 
       {% else %}
         {%- comment -%}如果没写 citation，就用“标题 + venue + 年份”兜底{%- endcomment -%}
