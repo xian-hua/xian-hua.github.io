@@ -26,7 +26,7 @@ author:
   avatar           : "kk.png"
   name             : "Xianhua Yu"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Tenure-track Associate Professor"
   location         : "Dongguan, China"
   employer         : "Dongguan University of Technology"
   uri              : # URL
@@ -40,7 +40,7 @@ author:
   impactstory      : # URL
   orcid            : #"https://orcid.org/yourorcidurl"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
   scopus           : # URL
 
