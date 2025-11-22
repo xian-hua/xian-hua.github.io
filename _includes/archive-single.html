@@ -25,7 +25,7 @@
     <span class="pub-index">[{{ index }}]</span>
     <span class="pub-text">
       {% if post.citation %}
-        {{ post.citation }}
+        {{ post.citation | markdownify }}
       {% else %}
         {%- comment -%}如果没写 citation，就用“标题 + venue + 年份”兜底{%- endcomment -%}
         {% if post.title %}{{ post.title }}{% endif %}
