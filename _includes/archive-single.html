@@ -14,24 +14,29 @@
 
 {% if post.collection == 'publications' %}
 
-  {%- comment -%}
-  自定义：给 publications 用紧凑的 [1] [2] 编号样式
-  forloop.index 在 publications.html 的循环中可用
-  {%- endcomment -%}
-
   {% assign index = include.index | default: forloop.index %}
 
   <div class="pub-item">
     <span class="pub-index">[{{ index }}]</span>
     <span class="pub-text">
       {% if post.citation %}
-        {{ post.citation | markdownify }}
+
+        {%- comment -%}
+        自动给“X. Yu”和“Xianhua Yu”加粗 + 下划线
+        然后再做 markdown 渲染
+        {%- endcomment -%}
+        {% assign cit = post.citation %}
+        {% assign cit = cit | replace: "X. Yu", "<u><strong>X. Yu</strong></u>" %}
+        {% assign cit = cit | replace: "Xianhua Yu", "<u><strong>Xianhua Yu</strong></u>" %}
+        {{ cit | markdownify }}
+
       {% else %}
         {%- comment -%}如果没写 citation，就用“标题 + venue + 年份”兜底{%- endcomment -%}
         {% if post.title %}{{ post.title }}{% endif %}
         {% if post.venue %}, <em>{{ post.venue }}</em>{% endif %}
         {% if post.date %}, {{ post.date | date: "%Y" }}{% endif %}.
       {% endif %}
+
       {% if post.paperurl %}
         <a href="{{ post.paperurl }}">PDF</a>
       {% endif %}
