@@ -6,6 +6,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
+<br><br>
 
 About Me
 ======
@@ -16,9 +17,9 @@ Research Interest
 ======
 ● Battery-free IoT 
 
-● Wilress AI
-
 ● Low-Altitude Intelligent Networking 
+
+● Wireless AI
 
  
 Recent News
