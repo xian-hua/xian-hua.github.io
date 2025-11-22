@@ -26,9 +26,24 @@
         然后再做 markdown 渲染
         {%- endcomment -%}
         {% assign cit = post.citation %}
+
+        {%- comment -%}
+        自动加粗 + 下划线（X. Yu / Xianhua Yu）
+        {%- endcomment -%}
         {% assign cit = cit | replace: "X. Yu", "<u><strong>X. Yu</strong></u>" %}
         {% assign cit = cit | replace: "Xianhua Yu", "<u><strong>Xianhua Yu</strong></u>" %}
-        {{ cit | markdownify | remove: '<p>' | remove: '</p>' }}
+        
+        {%- comment -%}
+        让 markdownify 不包 <p>，避免上下间距太大
+        {%- endcomment -%}
+        {% assign rendered = cit | markdownify | remove: "<p>" | remove: "</p>" %}
+        
+        {%- comment -%}
+        为了编号紧凑对齐 -> 手动把 rendered 内容放入 <span class="pub-text-inner">
+        并禁止浏览器套 extra margin
+        {%- endcomment -%}
+        <span class="pub-text-inner">{{ rendered }}</span>
+
 
       {% else %}
         {%- comment -%}如果没写 citation，就用“标题 + venue + 年份”兜底{%- endcomment -%}
