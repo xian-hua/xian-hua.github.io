@@ -19,7 +19,7 @@
   forloop.index 在 publications.html 的循环中可用
   {%- endcomment -%}
 
-  {% assign index = forloop.index %}
+  {% assign index = include.index | default: forloop.index %}
 
   <div class="pub-item">
     <span class="pub-index">[{{ index }}]</span>
