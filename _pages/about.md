@@ -14,7 +14,7 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
  
 Research Interest
 ======
-● Backscatter communication 
+● Battery-free IoT 
 
 ● Wilress AI
 
@@ -23,5 +23,5 @@ Research Interest
  
 Recent News
 ======
-■ [20-Oct-2025] One paper was accepted by IEEE Communications Magazine.
+■ Oct 2025: One journal paper has been accepted by **IEEE Communications Magazine**.
 
