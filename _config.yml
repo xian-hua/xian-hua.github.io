@@ -26,9 +26,9 @@ author:
   avatar           : "abc.png"
   name             : "Xianhua Yu"
   pronouns         : # example: "she/her"  
-  bio              : "Tenure-track Associate Professor，Dongguan University of Technology"
+  bio              : "Tenure-track Associate Professor Dongguan University of Technology"
   location         : "Dongguan, China"
-  employer         : "Dongguan University of Technology"
+  employer         : #"Dongguan University of Technology"
   uri              : # URL
   email            : "yuxianhua@dgut.edu.cn" 
 
