@@ -17,6 +17,8 @@ Research Interests
 ======
 - Battery-free IoT 
 
+- Semantic Communication
+
 - Low-altitude Intelligent Networking 
 
 - Wireless AI
