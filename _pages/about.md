@@ -21,7 +21,7 @@ Research Interests
 
 - Low-altitude Intelligent Networking 
 
-- Wireless AI
+- AI for wireless communications
 
  
 Recent News
