@@ -26,6 +26,12 @@ Research Interests
  
 Recent News
 ======
+■ Apr. 2026: One conference paper has been accepted by **IEEE IEEE ICDCS**
+
+■ Mar. 2026: One conference paper has been accepted by **IEEE VTC-Spring workshop**
+
+■ Mar. 2026: One conference paper has been accepted by **IEEE ICC workshop**
+
 ■ Nov. 2025: Serve as a co-organizer of the 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems” (2025年广东省研究生学术论坛 “大模型与存储系统前沿学术分论坛”), and am honored to invite [Prof. Liuqing Yang](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/?id=126) as the opening ceremony keynote speaker.
 
 ■ Oct. 2025: One journal paper has been accepted by **IEEE Communications Magazine**.
