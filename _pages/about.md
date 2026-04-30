@@ -26,7 +26,7 @@ Research Interests
  
 Recent News
 ======
-■ Apr. 2026: One conference paper has been accepted by **IEEE Transactions on Communications**
+■ Apr. 2026: One journal paper has been accepted by **IEEE Transactions on Communications**
 
 ■ Apr. 2026: One conference paper has been accepted by **IEEE ICDCS**
 
