@@ -15,7 +15,7 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
  
 Research Interests
 ======
-- Battery-free IoT 
+- Ambient  IoT 
 
 - Semantic Communication
 
