@@ -26,6 +26,8 @@ Research Interests
  
 Recent News
 ======
+■ Aug. 2026: One conference paper has been accepted for presentation at IEEE GLOBECOM 2026. Congratulations to Zhenguan!
+
 ■ Jul. 2026: One journal paper has been accepted by **IEEE Transactions on Mobile Computing**
 
 ■ Apr. 2026: One journal paper has been accepted by **IEEE Transactions on Communications**
