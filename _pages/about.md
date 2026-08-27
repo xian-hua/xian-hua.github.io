@@ -1,44 +1,61 @@
 ---
+layout: about
+title: about
 permalink: /
-title: "Welcome to My Homepage!"
-author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
----
-<br><br>
+subtitle: Associate Professor &middot; Dongguan University of Technology
 
-About Me
-======
+profile:
+  align: right
+  image: xianhua-yu.png
+  image_circular: false
+  more_info: >
+    <p>School of Electrical Engineering and Intelligentization</p>
+    <p>Dongguan University of Technology</p>
+    <p>Dongguan, China</p>
+
+selected_papers: true
+social: true
+
+announcements:
+  enabled: false
+  scrollable: true
+  limit: 8
+
+latest_posts:
+  enabled: false
+---
+
+## About
+
 I joined the School of Electrical Engineering and Intelligentization at Dongguan University of Technology as an Associate Professor in December 2024, and I am also a member of the Dongguan Strategic Scientist Team. I received my Ph.D. degree from Macau University of Science and Technology in 2024, where I was fortunate to be supervised by [Prof. Dong Li](https://sites.google.com/view/eedongli). I obtained a joint M.S. degree from Iowa State University in 2020, where I had the opportunity to work with [Prof. Zhengdao Wang](https://mason.gmu.edu/~zwang52/index.html), and earned my M.S. and B.S. degrees from Tatung University in 2020 and 2017, respectively. Before joining DGUT, I worked as a postdoctoral fellow at Macau University of Science and Technology.
 
- 
-Research Interests
-======
-- Ambient  IoT 
+## Research Interests
 
+- Ambient IoT
 - Semantic Communication
-
-- Low-altitude Intelligent Networking 
-
+- Low-altitude Intelligent Networking
 - Wireless AI
 
- 
-Recent News
-======
-■ Aug. 2026: One conference paper has been accepted for presentation at **IEEE GLOBECOM 2026**. Congratulations to Zhenguan!
+## Students & People
 
-■ Jul. 2026: One journal paper has been accepted by **IEEE Transactions on Mobile Computing**
+Verified profiles of current students and group members were not available on the previous website. The [People page](/people/) is ready for confirmed profiles and research roles.
 
-■ Apr. 2026: One journal paper has been accepted by **IEEE Transactions on Communications**
+## Contact
 
-■ Apr. 2026: One conference paper has been accepted by **IEEE ICDCS**
+For research collaboration and student inquiries, please email [yuxianhua@dgut.edu.cn](mailto:yuxianhua@dgut.edu.cn).
 
-■ Mar. 2026: One conference paper has been accepted by **IEEE VTC-Spring workshop**
+## [News](/news/)
 
-■ Mar. 2026: One conference paper has been accepted by **IEEE ICC workshop**
-
-■ Nov. 2025: Serve as a co-organizer of the 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems” (2025年广东省研究生学术论坛 “大模型与存储系统前沿学术分论坛”), and am honored to invite [Prof. Liuqing Yang](https://facultyprofiles.hkust-gz.edu.cn/faculty-personal-page/?id=126) as the opening ceremony keynote speaker.
-
-■ Oct. 2025: One journal paper has been accepted by **IEEE Communications Magazine**.
-
+<div class="news">
+  <div class="table-responsive" style="max-height: 60vw">
+    <table class="table table-sm table-borderless">
+      {% assign recent_news = site.news | reverse %}
+      {% for item in recent_news limit: 8 %}
+        <tr>
+          <th scope="row" style="width: 20%">{{ item.date | date: '%b %Y' }}</th>
+          <td>{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
