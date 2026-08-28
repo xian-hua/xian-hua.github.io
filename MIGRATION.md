@@ -80,6 +80,7 @@ External-link checking found no confirmed dead third-party content links. The lo
 7. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
 8. A dedicated 1200 × 630 social-preview graphic and 180 × 180 Apple touch icon, if preferred over the current profile image and emoji favicon.
 9. Optional Google Analytics, Google Search Console, and Bing Webmaster verification identifiers.
+10. Funding amount and project role for the 2027–2029 国家青年科学基金项目（C类）.
 
 ## Rollback
 
