@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Xianhua Yu academic website social preview</title>
+  <desc id="description">Neutral academic branding for Xianhua Yu at Dongguan University of Technology.</desc>
+  <rect width="1200" height="630" fill="#f7f7f5"/>
+  <rect x="72" y="72" width="8" height="486" rx="4" fill="#b018a4"/>
+  <circle cx="1068" cy="116" r="54" fill="#b018a4" opacity="0.08"/>
+  <circle cx="1112" cy="76" r="22" fill="#b018a4" opacity="0.16"/>
+  <line x1="120" y1="474" x2="1080" y2="474" stroke="#d7d7d2" stroke-width="2"/>
+  <text x="120" y="246" fill="#18191c" font-family="'Microsoft YaHei', sans-serif" font-size="68" font-weight="650" letter-spacing="-1">Xianhua Yu (余显华)</text>
+  <text x="122" y="326" fill="#36373b" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="32" font-weight="500">Tenure-track Associate Professor</text>
+  <text x="122" y="380" fill="#55565b" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="29" font-weight="400">Dongguan University of Technology</text>
+  <text x="122" y="526" fill="#77787d" font-family="Arial, sans-serif" font-size="22" font-weight="400" letter-spacing="0.4">xian-hua.github.io</text>
+</svg>
