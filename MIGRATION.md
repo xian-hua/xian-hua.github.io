@@ -25,7 +25,7 @@
 - Recorded both confirmed grants as principal investigator. Exact grant periods are January 2025–December 2027 and January 2027–December 2029; the public pages use year-only ranges for a cleaner layout.
 - ORCID and telephone details are intentionally omitted at the user's request.
 - Kept the Teaching page hidden until confirmed course information is available; the People page is intentionally omitted for now.
-- Added a CV-only style correction that removes unintended native list markers beside date badges.
+- Enabled al-folio's official v1 Bootstrap compatibility layer so the CV plugin's list-group markup suppresses unintended native markers beside date badges.
 - News dates display month and year only because the previous site did not provide exact days.
 
 ## Removed placeholder content
