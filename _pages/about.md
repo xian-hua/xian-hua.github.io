@@ -14,7 +14,7 @@ profile:
     <p>Office: New Campus, Building 1, Zone A, Room 1004（新区1栋A区1004）</p>
 
 selected_papers: true
-social: true
+social: false
 
 announcements:
   enabled: false
@@ -43,7 +43,8 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
 
 ## Contact
 
-For research collaboration and student inquiries, please email [yuxianhua@dgut.edu.cn](mailto:yuxianhua@dgut.edu.cn).
+- **Email:** [yuxianhua@dgut.edu.cn](mailto:yuxianhua@dgut.edu.cn)
+- **Google Scholar:** [Xianhua Yu](https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&hl=zh-CN)
 
 ## [News](/news/)
 

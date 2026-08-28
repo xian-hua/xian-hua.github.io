@@ -13,7 +13,7 @@
 ## Migrated content
 
 - Rebuilt the homepage around About, Research Interests, News, Selected Publications, and Contact.
-- Preserved the existing biography, research interests, eight original News items, profile photo, email address, Google Scholar profile, and GitHub profile.
+- Preserved the existing biography, research interests, eight original News items, profile photo, email address, and Google Scholar profile; the personal GitHub profile was later omitted at the user's request.
 - Added a ninth News item for the National Natural Science Foundation of China Young Scientists Fund (C) grant.
 - Consolidated 20 IEEE Author Profile publication records into `_bibliography/papers.bib`.
 - Added verified DOI links for all 20 papers and existing arXiv identifiers where available.
@@ -26,6 +26,7 @@
 - ORCID and telephone details are intentionally omitted at the user's request.
 - Kept the Teaching page hidden until confirmed course information is available; the People page is intentionally omitted for now.
 - Added a CV-only post-render style hook that suppresses unintended native list markers without enabling the site-wide compatibility layer or affecting navigation.
+- Consolidated Email and Google Scholar under Contact and disabled the redundant social-icon block at the bottom of the homepage.
 - News dates display month and year only because the previous site did not provide exact days.
 
 ## Removed placeholder content
