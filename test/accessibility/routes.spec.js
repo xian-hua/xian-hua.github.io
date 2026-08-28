@@ -36,6 +36,7 @@ test("homepage contact line is accessible and wraps on mobile", async ({ page })
 });
 
 test("homepage research positioning and office location are consistent", async ({ page }) => {
+  await page.setViewportSize({ width: 1792, height: 850 });
   await page.goto("/", { waitUntil: "networkidle" });
 
   await expect(page.locator(".research-identity")).toHaveText(
@@ -49,6 +50,15 @@ test("homepage research positioning and office location are consistent", async (
     "International Cooperation and Innovation Zone",
     "(国际合作创新区1栋A区1004)",
   ]);
+
+  const addressLines = await page.locator(".profile-office-line").evaluateAll((lines) =>
+    lines.map((line) => {
+      const range = document.createRange();
+      range.selectNodeContents(line);
+      return [...range.getClientRects()].length;
+    })
+  );
+  expect(addressLines).toEqual([1, 1, 1]);
 });
 
 test("CV desktop date grid keeps labels and content aligned", async ({ page }) => {
@@ -69,20 +79,32 @@ test("CV desktop date grid keeps labels and content aligned", async ({ page }) =
 
   const layout = await page.locator(".cv .cv-timeline-entry").evaluateAll((entries) =>
     entries.map((entry) => {
+      const dateColumn = entry.querySelector(".date-column");
       const badge = entry.querySelector(".date-column .badge");
       const content = entry.querySelector(".cv-entry-content");
+      const title = content.querySelector(".title");
       const range = document.createRange();
       range.selectNodeContents(badge);
+      const titleRange = document.createRange();
+      titleRange.selectNodeContents(title);
+      const badgeRect = badge.getBoundingClientRect();
+      const titleFirstLine = [...titleRange.getClientRects()][0];
       return {
+        centerDelta: Math.abs(badgeRect.top + badgeRect.height / 2 - (titleFirstLine.top + titleFirstLine.height / 2)),
         contentLeft: content.getBoundingClientRect().left,
+        contentTop: content.getBoundingClientRect().top,
+        dateTop: dateColumn.getBoundingClientRect().top,
         display: getComputedStyle(entry).display,
         textFits: badge.scrollWidth <= badge.clientWidth,
         textRects: [...range.getClientRects()].length,
+        transform: getComputedStyle(dateColumn).transform,
         whiteSpace: getComputedStyle(badge).whiteSpace,
       };
     })
   );
   expect(layout.every((entry) => entry.display === "grid")).toBe(true);
+  expect(layout.every((entry) => entry.transform === "none" && Math.abs(entry.dateTop - entry.contentTop) < 1)).toBe(true);
+  expect(layout.every((entry) => entry.centerDelta < 0.5)).toBe(true);
   expect(layout.every((entry) => entry.whiteSpace === "nowrap" && entry.textRects === 1 && entry.textFits)).toBe(true);
   expect(Math.max(...layout.map((entry) => entry.contentLeft)) - Math.min(...layout.map((entry) => entry.contentLeft))).toBeLessThan(1);
 
@@ -92,6 +114,8 @@ test("CV desktop date grid keeps labels and content aligned", async ({ page }) =
   await expect(page.locator(".cv")).not.toContainText("Appointment period:");
   await expect(page.locator(".cv")).not.toContainText("project period:");
   await expect(page.locator(".cv-funding-meta")).toHaveText(["Principal Investigator · RMB 300,000", "Principal Investigator · RMB 100,000"]);
+  await expect(page.locator(".cv-primary-links")).toHaveCount(0);
+  await expect(page.locator(".post-header").getByRole("link", { name: /Email|Google Scholar|Homepage/ })).toHaveCount(0);
 });
 
 test("CV mobile timeline stacks without horizontal overflow", async ({ page }) => {

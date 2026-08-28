@@ -98,14 +98,6 @@ Jekyll::Hooks.register :pages, :post_render do |page|
     page.output.gsub!(/(<h3[^>]*>)Projects(<\/h3>)/, '\1Research Funding\2')
     page.output.sub!(/(<h3[^>]*>Research Funding<\/h3>)/, '\1<p class="cv-translation-note">English project titles are descriptive translations of the official Chinese titles.</p>')
 
-    links = <<~HTML
-      <div class="cv-primary-links" aria-label="CV links">
-        <a href="mailto:yuxianhua@dgut.edu.cn" aria-label="Email Xianhua Yu">Email</a>
-        <a href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&amp;hl=en" target="_blank" rel="external noopener" aria-label="Google Scholar profile (opens in a new tab)">Google Scholar</a>
-        <a href="/" aria-label="Xianhua Yu homepage">Homepage</a>
-      </div>
-    HTML
-    page.output.sub!(/(<h1[^>]*>\s*CV\s*<\/h1>)/, "\\1#{links}")
     SiteRenderFixes.add_cv_service(page)
     page.output.gsub!(/<h3([^>]*class="[^"]*card-title[^"]*"[^>]*)>/, '<h2\1>')
     page.output.gsub!("</h3>", "</h2>")
@@ -122,17 +114,6 @@ Jekyll::Hooks.register :pages, :post_render do |page|
         padding-left: 0;
       }
 
-      .cv-primary-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem 1rem;
-        margin: 0.25rem 0 1rem;
-      }
-
-      .cv-primary-links a {
-        min-height: 2rem;
-      }
-
       .cv .cv-timeline-entry {
         align-items: start;
         column-gap: 1.25rem;
@@ -147,6 +128,7 @@ Jekyll::Hooks.register :pages, :post_render do |page|
       .cv .date-column {
         min-width: 0;
         text-align: left;
+        transform: none;
         width: 100%;
       }
 
@@ -156,6 +138,7 @@ Jekyll::Hooks.register :pages, :post_render do |page|
         max-width: none;
         min-width: 0;
         text-transform: none !important;
+        transform: translateY(-0.1rem);
         white-space: nowrap;
         width: max-content;
       }
@@ -274,6 +257,16 @@ Jekyll::Hooks.register :pages, :post_render do |page|
 
       .profile .more-info .profile-office-start {
         margin-top: 0.55rem;
+      }
+
+      @media (min-width: 992px) {
+        .profile.float-right {
+          width: 35%;
+        }
+
+        .profile .more-info .profile-office-line {
+          white-space: nowrap;
+        }
       }
 
       .research-identity {
