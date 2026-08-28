@@ -45,9 +45,36 @@ test("homepage contact line is accessible and wraps on mobile", async ({ page })
   expect(layout.pageWidth).toBeLessThanOrEqual(layout.viewport);
 });
 
+test("mobile navigation expands and collapses with the preserved three links", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  const toggle = page.getByRole("button", { name: "Toggle navigation" });
+  const menu = page.locator("#navbarNav");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(menu.getByRole("link")).toHaveText(["About (current)", "Publications", "CV"]);
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+});
+
+test("publication Bib button still opens its bibliography panel", async ({ page }) => {
+  await page.goto("/publications/", { waitUntil: "networkidle" });
+  const button = page.locator("a.bibtex.btn").first();
+  const panel = page.locator("div.bibtex.hidden").first();
+  await expect(button).toBeVisible();
+  await button.click();
+  await expect(panel).toBeVisible();
+});
+
 test("homepage research positioning and office location are consistent", async ({ page }) => {
   await page.setViewportSize({ width: 1792, height: 850 });
   await page.goto("/", { waitUntil: "networkidle" });
+
+  const portrait = page.locator('.profile img[src*="xianhua-yu.png"]');
+  await expect(portrait).toHaveCount(1);
+  await expect(portrait).toHaveAttribute("alt", "Portrait of Xianhua Yu (余显华)");
 
   await expect(page.locator(".research-identity")).toHaveText(
     "My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking. Across these areas, I develop and apply wireless AI and learning-driven signal processing methods."
@@ -69,6 +96,12 @@ test("homepage research positioning and office location are consistent", async (
     })
   );
   expect(addressLines).toEqual([1, 1, 1]);
+
+  const novemberNews = page.locator(".news tr").filter({ hasText: "Nov 2025" });
+  await expect(novemberNews).toHaveCount(1);
+  await expect(novemberNews.locator("td")).toHaveText(
+    "Co-organized the 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems” (2025年广东省研究生学术论坛“大模型与存储系统前沿学术分论坛”), with Prof. Liuqing Yang as the keynote speaker at the opening ceremony."
+  );
 });
 
 test("CV desktop date grid keeps labels and content aligned", async ({ page }) => {
@@ -128,9 +161,39 @@ test("CV desktop date grid keeps labels and content aligned", async ({ page }) =
 
   const contactCard = page.getByRole("heading", { name: "Contact Information", exact: true }).locator("..");
   await expect(contactCard.locator("b")).toHaveText(["Name", "Professional Title", "Email", "Office"]);
+  await expect(contactCard.getByRole("link", { name: "yuxianhua@dgut.edu.cn" })).toHaveAttribute("href", "mailto:yuxianhua@dgut.edu.cn");
+  await expect(contactCard.locator(".cv-location-line")).toHaveText([
+    "Room 1004, Zone A, Building 1",
+    "International Cooperation and Innovation Zone",
+    "(国际合作创新区1栋A区1004)",
+  ]);
   await expect(contactCard).not.toContainText("Location");
   await expect(contactCard).not.toContainText("Website");
   await expect(contactCard.locator('a[href="https://xian-hua.github.io/"]')).toHaveCount(0);
+
+  await expect(page.getByRole("heading", { name: "Professional Service", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Selected Professional Service", exact: true })).toHaveCount(0);
+  await expect(page.locator(".cv-professional-service li")).toHaveText(
+    "Co-organizer, 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems.”"
+  );
+  await expect(page.locator(".cv-research-focus .interest-item")).toHaveText([
+    "Research Areas: Ambient IoT and Backscatter Communications; Semantic Communications; Low-Altitude Intelligent Networking",
+    "Methodological Focus: Wireless AI and Learning-Driven Signal Processing",
+  ]);
+  await expect(page.locator(".cv")).toContainText(
+    "Tenure-track Associate Professor at Dongguan University of Technology working on resource-efficient intelligent wireless systems. Research interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking, with a methodological focus on wireless AI and learning-driven signal processing. Principal investigator of projects supported by the National Natural Science Foundation of China and the Guangdong Basic and Applied Basic Research Foundation."
+  );
+});
+
+test("Scholar links use one canonical profile URL", async ({ page }) => {
+  const canonicalScholar = "https://scholar.google.com/citations?user=mR4CJ4IAAAAJ";
+  for (const route of ["/", "/publications/", "/cv/"]) {
+    await page.goto(route, { waitUntil: "networkidle" });
+    const links = page.locator('a[href*="scholar.google.com/citations"]');
+    for (const link of await links.all()) {
+      await expect(link).toHaveAttribute("href", canonicalScholar);
+    }
+  }
 });
 
 test("CV mobile timeline stacks without horizontal overflow", async ({ page }) => {

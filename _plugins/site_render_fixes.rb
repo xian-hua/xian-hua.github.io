@@ -38,7 +38,7 @@ module SiteRenderFixes
     section = <<~HTML
       <a class="anchor" id="professional-service"></a>
       <div class="card mt-3 p-3 cv-professional-service">
-        <h3 class="card-title font-weight-medium">Selected Professional Service</h3>
+        <h3 class="card-title font-weight-medium">Professional Service</h3>
         <ul class="card-text font-weight-light">#{list}</ul>
       </div>
     HTML
@@ -89,6 +89,10 @@ Jekyll::Hooks.register :pages, :post_render do |page|
   CSS
 
   if page.data["layout"] == "cv"
+    page.output.sub!(
+      /(<td[^>]*>)yuxianhua@dgut\.edu\.cn(<\/td>)/,
+      '\1<a href="mailto:yuxianhua@dgut.edu.cn">yuxianhua@dgut.edu.cn</a>\2'
+    )
     page.output.gsub!(
       "Room 1004, Zone A, Building 1, International Cooperation and Innovation Zone (国际合作创新区1栋A区1004), ",
       '<span class="cv-location-line">Room 1004, Zone A, Building 1</span><span class="cv-location-line">International Cooperation and Innovation Zone</span><span class="cv-location-line">(国际合作创新区1栋A区1004)</span> '
@@ -192,6 +196,15 @@ Jekyll::Hooks.register :pages, :post_render do |page|
       }
     CSS
   elsif page.url == "/"
+    profile_image = page.data.dig("profile", "image")
+    profile_image_alt = page.data.dig("profile", "image_alt")
+    if profile_image && profile_image_alt
+      page.output.sub!(
+        %(alt="#{CGI.escapeHTML(profile_image)}"),
+        %(alt="#{CGI.escapeHTML(profile_image_alt)}")
+      )
+    end
+
     SiteRenderFixes.inject_styles(page, "about-site-refinements", <<~CSS)
       .post-header .desc {
         margin-bottom: 0.6rem;
