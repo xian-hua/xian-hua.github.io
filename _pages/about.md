@@ -38,7 +38,7 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
 
 ## Research Grants
 
-- **面向无源物联网的标签通感协同推断与跨场景适配机理研究** — 国家青年科学基金项目（C类），2027-01-01–2029-12-31。
+- **面向无源物联网的标签通感协同推断与跨场景适配机理研究** — 国家自然科学基金青年科学基金项目（C类），2027–2029，30 万元，主持。
 - **面向环境散射通信的无线电检测与并行解码机理研究** — 广东省自然科学基金粤莞青年基金，2025–2027，10 万元，主持。
 
 ## Students & People
