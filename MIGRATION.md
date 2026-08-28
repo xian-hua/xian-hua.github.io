@@ -4,9 +4,10 @@
 
 - Public URL remains `https://xian-hua.github.io/`.
 - Source baseline: `origin/master` at commit `8649e4f46cb0615fa0eb05ba1e1f6fce72a6fd1e`.
-- Local safety branch: `backup/pre-al-folio-20260827`.
+- Safety branch: `backup/pre-al-folio-20260827` (local and GitHub).
 - Migration branch: `migration/al-folio-v1.2`.
-- The public `master` branch is not changed by this migration branch.
+- Published to `master` on 2026-08-28; deployment workflow fix commit: `69c4860`.
+- GitHub Pages publishes the generated site from `gh-pages` at the repository root with HTTPS enforced.
 - Target starter: official stable al-folio v1.2 with its pinned plugin versions.
 
 ## Migrated content
@@ -36,11 +37,11 @@ The migration removes the Academic Pages runtime and all demo material, includin
 
 The `Deploy site` workflow builds on pushes to `master` or `main`, purges unused CSS, and deploys `_site` to `gh-pages`. Pull requests build but do not deploy. A separate workflow checks generated internal links after a successful deployment, and the accessibility workflow can be started manually.
 
-Required repository settings:
+Applied repository settings:
 
-1. GitHub Actions must be enabled with permission to write repository contents.
-2. GitHub Pages must publish from the `gh-pages` branch at the repository root.
-3. Merge the migration branch only after reviewing the preview and the confirmation list below.
+1. GitHub Actions is enabled with permission to write repository contents.
+2. GitHub Pages publishes from the `gh-pages` branch at the repository root.
+3. The migration and workflow fix are present on both `master` and `migration/al-folio-v1.2`.
 
 The root-user-site configuration is:
 
@@ -63,8 +64,10 @@ baseurl:
 - Mobile browser at 390 px: no horizontal overflow, profile image loaded, navigation expanded correctly, no console errors.
 - Homepage: 5 selected publications and 8 News rows rendered.
 - SEO outputs: canonical URL, description, keywords, Open Graph image, Twitter card, Schema.org JSON-LD, sitemap, robots.txt, and emoji favicon generated.
+- Production deploy workflow, Pages deployment, and post-deployment broken-link workflow: passed.
+- Live homepage, Publications, News, People, CV, sitemap, and robots routes: HTTP 200 on 2026-08-28.
 
-External-link checking found no confirmed dead third-party content links. The local network timed out on arXiv, Google Scholar, and one Google Sites page; these links were retained because they are existing or independently verified academic-profile links. The currently public site returns 404 for the new `/news/` and `/people/` routes until this migration is deployed; both routes exist and pass the generated-site internal crawl.
+External-link checking found no confirmed dead third-party content links. The local network timed out on arXiv, Google Scholar, and one Google Sites page; these links were retained because they are existing or independently verified academic-profile links. Before deployment, the old public site returned 404 for the new `/news/` and `/people/` routes; both routes are now live and passed the generated-site internal crawl.
 
 ## Information requiring confirmation
 
