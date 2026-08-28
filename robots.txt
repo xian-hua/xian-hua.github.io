@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://xian-hua.github.io/sitemap.xml
