@@ -25,9 +25,11 @@
 - Recorded both confirmed grants as principal investigator, with the public pages showing the month-precise periods January 2025–December 2027 and January 2027–December 2029.
 - ORCID and telephone details are intentionally omitted at the user's request.
 - Kept the Teaching page hidden until confirmed course information is available; the People page is intentionally omitted for now.
-- Added a CV-only post-render style hook that suppresses unintended native list markers without enabling the site-wide compatibility layer or affecting navigation.
+- Added narrowly scoped post-render fixes for CV list markers and publication-year contrast without enabling the site-wide compatibility layer or affecting navigation.
 - Placed Email in the profile block beneath the office address, moved Google Scholar to the Publications introduction, and removed the dedicated Contact section.
 - Removed Research Grants from the homepage while retaining both confirmed grants in the CV; a separate Projects page remains intentionally omitted until richer project material is available.
+- Capitalized the Publications page title, removed the implementation-focused BibTeX description and filter box, and increased publication-year contrast.
+- Standardized the CV location as a concise bilingual office address without a redundant city suffix.
 - News dates display month and year only because the previous site did not provide exact days.
 
 ## Removed placeholder content
