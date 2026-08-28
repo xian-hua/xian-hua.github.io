@@ -68,6 +68,7 @@ end
 Jekyll::Hooks.register :pages, :post_render do |page|
   SiteRenderFixes.apply_seo_description(page)
   page.output.sub!('<meta name="twitter:card" content="summary">', '<meta name="twitter:card" content="summary_large_image">')
+  page.output.sub!(/(&copy;|©) Copyright /, '\1 ')
 
   page.output.sub!(/<header class="post-header">(.*?)<\/header>/m) do
     "<div class=\"post-header\">#{Regexp.last_match(1)}</div>"

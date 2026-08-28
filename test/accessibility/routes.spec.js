@@ -21,6 +21,20 @@ test("site uses a fixed light theme without a theme toggle", async ({ page }) =>
   }
 });
 
+test("footer stays minimal on every public route", async ({ page }) => {
+  const expectedFooter = `© ${new Date().getFullYear()} Xianhua Yu.`;
+  for (const route of routes) {
+    await page.goto(route, { waitUntil: "networkidle" });
+    const footer = page.getByRole("contentinfo");
+    await expect(footer).toHaveText(expectedFooter);
+    await expect(footer.locator("a")).toHaveCount(0);
+    await expect(footer).not.toContainText("Copyright");
+    await expect(footer).not.toContainText("Powered by");
+    await expect(footer).not.toContainText("Hosted by");
+    await expect(footer).not.toContainText("Last updated");
+  }
+});
+
 test("homepage contact line is accessible and wraps on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
