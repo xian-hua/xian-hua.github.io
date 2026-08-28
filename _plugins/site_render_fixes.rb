@@ -145,18 +145,58 @@ Jekyll::Hooks.register :pages, :post_render do |page|
     CSS
   elsif page.url == "/"
     SiteRenderFixes.inject_styles(page, "about-site-refinements", <<~CSS)
-      .about-academic-links {
-        clear: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem 1.1rem;
-        margin: 0.25rem 0 1rem;
+      .post-header .desc {
+        margin-bottom: 0.6rem;
       }
 
-      .about-academic-links a {
-        align-items: center;
-        display: inline-flex;
-        min-height: 2.25rem;
+      .about-contact-line {
+        align-items: baseline;
+        clear: none;
+        color: var(--global-text-color-light);
+        display: flex;
+        flex-wrap: wrap;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 400;
+        gap: 0.25rem 1.15rem;
+        line-height: 1.4;
+        margin: 0 0 1.25rem;
+      }
+
+      .about-contact-line a {
+        color: var(--global-text-color);
+        font-weight: 400;
+        text-decoration-color: var(--global-theme-color);
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.15em;
+      }
+
+      .about-contact-line a:hover {
+        color: var(--global-theme-color);
+      }
+
+      .about-contact-line a:focus-visible {
+        color: var(--global-theme-color);
+        outline: 2px solid var(--global-theme-color);
+        outline-offset: 2px;
+      }
+
+      .profile .more-info {
+        color: var(--global-text-color-light);
+        font-family: inherit;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        margin: 0.55rem 0 0.25rem;
+      }
+
+      .profile .more-info p {
+        display: block;
+        margin: 0 0 0.2rem;
+      }
+
+      .profile .more-info p:last-child {
+        margin-bottom: 0;
       }
 
       .research-identity {
@@ -179,8 +219,8 @@ Jekyll::Hooks.register :pages, :post_render do |page|
           width: 100%;
         }
 
-        .about-academic-links {
-          gap: 0.25rem 0.9rem;
+        .about-contact-line {
+          gap: 0.25rem 1rem;
         }
       }
     CSS

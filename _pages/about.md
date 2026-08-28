@@ -26,13 +26,12 @@ latest_posts:
   enabled: false
 ---
 
-<div class="about-academic-links" aria-label="Primary academic links">
-  <a href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&hl=en" target="_blank" rel="external noopener" aria-label="Google Scholar profile (opens in a new tab)">Google Scholar</a>
-  <a href="mailto:yuxianhua@dgut.edu.cn" aria-label="Email Xianhua Yu">Email</a>
-  <a href="/cv/" aria-label="Web CV">CV</a>
+<div class="about-contact-line" aria-label="Contact and academic profile">
+  <span class="about-contact-item">Email: <a href="mailto:yuxianhua@dgut.edu.cn">yuxianhua@dgut.edu.cn</a></span>
+  <a class="about-contact-item" href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&hl=en" target="_blank" rel="external noopener">Google Scholar</a>
 </div>
 
-<p class="research-identity">My research develops signal-processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking, with wireless AI serving as a cross-cutting methodology.</p>
+<p class="research-identity">My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking, with wireless AI serving as a cross-cutting methodology.</p>
 
 ## About
 

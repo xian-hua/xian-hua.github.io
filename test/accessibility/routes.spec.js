@@ -11,17 +11,22 @@ for (const route of routes) {
   });
 }
 
-test("homepage academic links are accessible and wrap on mobile", async ({ page }) => {
+test("homepage contact line is accessible and wraps on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
 
-  const linkRow = page.locator(".about-academic-links");
-  await expect(linkRow).toBeVisible();
-  await expect(linkRow.getByRole("link", { name: /Google Scholar profile/ })).toBeVisible();
-  await expect(linkRow.getByRole("link", { name: "Email Xianhua Yu" })).toBeVisible();
-  await expect(linkRow.getByRole("link", { name: "Web CV" })).toBeVisible();
+  const contactLine = page.locator(".about-contact-line");
+  const email = contactLine.getByRole("link", { name: "yuxianhua@dgut.edu.cn" });
+  const scholar = contactLine.getByRole("link", { name: "Google Scholar" });
 
-  const layout = await linkRow.evaluate((element) => ({
+  await expect(contactLine).toBeVisible();
+  await expect(contactLine).toContainText("Email: yuxianhua@dgut.edu.cn");
+  await expect(email).toHaveAttribute("href", "mailto:yuxianhua@dgut.edu.cn");
+  await expect(scholar).toHaveAttribute("target", "_blank");
+  await expect(scholar).toHaveAttribute("rel", /noopener/);
+  await expect(contactLine.getByRole("link", { name: "CV" })).toHaveCount(0);
+
+  const layout = await contactLine.evaluate((element) => ({
     right: element.getBoundingClientRect().right,
     viewport: document.documentElement.clientWidth,
     pageWidth: document.documentElement.scrollWidth,
