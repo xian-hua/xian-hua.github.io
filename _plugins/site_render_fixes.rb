@@ -51,6 +51,16 @@ module SiteRenderFixes
   end
 end
 
+# Keep the starter thin while allowing narrowly scoped local CV templates to
+# override the packaged renderers without owning al-folio's core `_includes` path.
+Jekyll::Hooks.register :site, :after_init do |site|
+  local_cv_includes = File.expand_path("../_cv_includes", __dir__)
+  next unless Dir.exist?(local_cv_includes) && site.respond_to?(:includes_load_paths)
+
+  site.includes_load_paths.delete(local_cv_includes)
+  site.includes_load_paths.unshift(local_cv_includes)
+end
+
 # The CV plugin emits Bootstrap-style list-group markup while this site uses
 # al-folio's Tailwind runtime without the site-wide Bootstrap compatibility
 # layer. It also appends punctuation to location fields unconditionally.
@@ -80,15 +90,13 @@ Jekyll::Hooks.register :pages, :post_render do |page|
 
   if page.data["layout"] == "cv"
     page.output.gsub!(
-      "Room 1004, Zone A, Building 1, Songshan Lake Campus (新区1栋A区1004), ",
-      "Room 1004, Zone A, Building 1, Songshan Lake Campus (新区1栋A区1004) "
+      "Room 1004, Zone A, Building 1, International Cooperation and Innovation Zone (国际合作创新区1栋A区1004), ",
+      '<span class="cv-location-line">Room 1004, Zone A, Building 1</span><span class="cv-location-line">International Cooperation and Innovation Zone</span><span class="cv-location-line">(国际合作创新区1栋A区1004)</span> '
     )
     page.output.gsub!(/(<h3[^>]*>)Experience(<\/h3>)/, '\1Appointments\2')
     page.output.gsub!(/(<h3[^>]*>)Interests(<\/h3>)/, '\1Research Focus\2')
     page.output.gsub!(/(<h3[^>]*>)Projects(<\/h3>)/, '\1Research Funding\2')
-    page.output.gsub!("2027 - 2029", "Jan. 2027–Dec. 2029")
-    page.output.gsub!("2025 - 2027", "Jan. 2025–Dec. 2027")
-    page.output.sub!(/(<h3[^>]*>Research Funding<\/h3>)/, '\1<p class="cv-translation-note">English project titles are descriptive translations.</p>')
+    page.output.sub!(/(<h3[^>]*>Research Funding<\/h3>)/, '\1<p class="cv-translation-note">English project titles are descriptive translations of the official Chinese titles.</p>')
 
     links = <<~HTML
       <div class="cv-primary-links" aria-label="CV links">
@@ -125,17 +133,82 @@ Jekyll::Hooks.register :pages, :post_render do |page|
         min-height: 2rem;
       }
 
+      .cv .cv-timeline-entry {
+        align-items: start;
+        column-gap: 1.25rem;
+        display: grid;
+        grid-template-columns: 7.75rem minmax(0, 1fr);
+      }
+
+      .cv .cv-timeline-list > .list-group-item {
+        padding: 0.7rem 0;
+      }
+
+      .cv .date-column {
+        min-width: 0;
+        text-align: left;
+        width: 100%;
+      }
+
       .cv .date-column .badge {
+        display: inline-block;
         line-height: 1.25;
-        max-width: 9rem;
+        max-width: none;
+        min-width: 0;
         text-transform: none !important;
-        white-space: normal;
+        white-space: nowrap;
+        width: max-content;
+      }
+
+      .cv .cv-entry-content {
+        min-width: 0;
+        overflow-wrap: break-word;
+      }
+
+      .cv .cv-entry-organization,
+      .cv .cv-entry-field,
+      .cv .cv-entry-summary,
+      .cv .cv-funding-agency,
+      .cv .cv-funding-meta {
+        font-size: 0.95rem;
+      }
+
+      .cv .cv-entry-field,
+      .cv .cv-entry-summary {
+        font-style: italic;
+      }
+
+      .cv .cv-funding-agency {
+        margin-top: 0.4rem;
+      }
+
+      .cv .cv-funding-meta {
+        color: var(--global-text-color);
+        color: color-mix(in srgb, var(--global-text-color) 70%, var(--global-bg-color));
+        margin-top: 0.15rem;
+      }
+
+      .cv-location-line {
+        display: block;
       }
 
       .cv-translation-note {
         color: var(--global-text-color);
-        font-size: 0.9rem;
-        margin-bottom: 0.75rem;
+        color: color-mix(in srgb, var(--global-text-color) 70%, var(--global-bg-color));
+        font-size: 0.875rem;
+        font-weight: 400;
+        margin: 0.1rem 0 0.75rem;
+      }
+
+      @media (max-width: 576px) {
+        .cv .cv-timeline-entry {
+          grid-template-columns: minmax(0, 1fr);
+          row-gap: 0.55rem;
+        }
+
+        .cv .date-column .badge {
+          max-width: 100%;
+        }
       }
 
       .cv-professional-service ul {
@@ -197,6 +270,10 @@ Jekyll::Hooks.register :pages, :post_render do |page|
 
       .profile .more-info p:last-child {
         margin-bottom: 0;
+      }
+
+      .profile .more-info .profile-office-start {
+        margin-top: 0.55rem;
       }
 
       .research-identity {

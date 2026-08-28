@@ -1,0 +1,52 @@
+{% comment %}Local education renderer using concise year-only labels and the shared CV grid.{% endcomment %}
+
+<ul class="card-text font-weight-light list-group list-group-flush cv-timeline-list">
+  {% for entry in entries %}
+    {% assign raw_start = entry.start_date | default: entry.startDate %}
+    {% assign raw_end = entry.end_date | default: entry.endDate %}
+    {% assign start_year = raw_start | split: '-' | first %}
+    {% assign end_year = raw_end | split: '-' | first | default: 'Present' %}
+    {% assign date_label = start_year | append: '–' | append: end_year %}
+    {% assign study_type = entry.studyType | default: entry.degree %}
+
+    <li class="list-group-item">
+      <div class="cv-timeline-entry">
+        <div class="date-column">
+          <span class="badge font-weight-bold danger-color-dark align-middle">{{ date_label }}</span>
+        </div>
+        <div class="cv-entry-content">
+          {% if entry.url %}
+            <div class="title font-weight-bold">
+              <a href="{{ entry.url }}">{{ study_type }}</a>
+            </div>
+          {% elsif study_type %}
+            <div class="title font-weight-bold">{{ study_type }}</div>
+          {% endif %}
+
+          {% if entry.institution %}
+            <div class="cv-entry-organization">{{ entry.institution }}</div>
+          {% endif %}
+
+          {% if entry.area %}
+            <div class="cv-entry-field">{{ entry.area }}</div>
+          {% endif %}
+
+          {% if entry.courses or entry.highlights %}
+            <ul class="items">
+              {% for item in entry.courses %}
+                <li>
+                  <span class="item">{{ item }}</span>
+                </li>
+              {% endfor %}
+              {% for item in entry.highlights %}
+                <li>
+                  <span class="item">{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,50 @@
+{% comment %}Local JSONResume appointment renderer with a shared grid-based date column.{% endcomment %}
+
+<ul class="card-text font-weight-light list-group list-group-flush cv-timeline-list">
+  {% for entry in entries %}
+    {% assign date_label = entry.displayDate %}
+    {% if date_label == null or date_label == '' %}
+      {% assign raw_start = entry.start_date | default: entry.startDate %}
+      {% assign raw_end = entry.end_date | default: entry.endDate %}
+      {% assign start_year = raw_start | split: '-' | first %}
+      {% assign end_year = raw_end | split: '-' | first | default: 'Present' %}
+      {% assign date_label = start_year | append: '–' | append: end_year %}
+    {% endif %}
+
+    <li class="list-group-item">
+      <div class="cv-timeline-entry">
+        <div class="date-column">
+          <span class="badge font-weight-bold danger-color-dark align-middle">{{ date_label }}</span>
+        </div>
+        <div class="cv-entry-content">
+          {% if entry.url %}
+            <div class="title font-weight-bold">
+              <a href="{{ entry.url }}">{{ entry.position }}</a>
+            </div>
+          {% elsif entry.position %}
+            <div class="title font-weight-bold">{{ entry.position }}</div>
+          {% endif %}
+
+          {% assign organization = entry.name | default: entry.company | default: entry.organization %}
+          {% if organization %}
+            <div class="cv-entry-organization">{{ organization }}</div>
+          {% endif %}
+
+          {% if entry.summary %}
+            <div class="cv-entry-summary">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+          {% endif %}
+
+          {% if entry.highlights %}
+            <ul class="items">
+              {% for item in entry.highlights %}
+                <li>
+                  <span class="item">{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

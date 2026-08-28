@@ -12,7 +12,9 @@ profile:
   more_info: >
     <p>School of Electrical Engineering and Intelligentization</p>
     <p>Dongguan University of Technology</p>
-    <p>Office: Room 1004, Zone A, Building 1, Songshan Lake Campus (新区1栋A区1004)</p>
+    <p class="profile-office-start">Office: Room 1004, Zone A, Building 1</p>
+    <p>International Cooperation and Innovation Zone</p>
+    <p>(国际合作创新区1栋A区1004)</p>
 
 selected_papers: false
 social: false
@@ -31,7 +33,7 @@ latest_posts:
   <a class="about-contact-item" href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&hl=en" target="_blank" rel="external noopener">Google Scholar</a>
 </div>
 
-<p class="research-identity">My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking, with wireless AI serving as a cross-cutting methodology.</p>
+<p class="research-identity">My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking. Across these areas, I develop and apply wireless AI and learning-driven signal processing methods.</p>
 
 ## About
 
@@ -43,7 +45,7 @@ I am a tenure-track Associate Professor in the School of Electrical Engineering 
 - Semantic Communications
 - Low-Altitude Intelligent Networking
 
-<p class="research-methodology"><strong>Cross-cutting methodology:</strong> Wireless AI and Learning-Driven Signal Processing</p>
+<p class="research-methodology"><strong>Methodological Focus:</strong> Wireless AI and Learning-Driven Signal Processing</p>
 
 ## [News](/news/)
 

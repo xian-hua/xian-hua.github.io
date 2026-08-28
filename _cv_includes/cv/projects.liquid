@@ -1,0 +1,51 @@
+{% comment %}Local research-funding renderer with non-duplicated metadata and the shared CV grid.{% endcomment %}
+
+<ul class="card-text font-weight-light list-group list-group-flush cv-timeline-list cv-funding-list">
+  {% for entry in entries %}
+    {% assign date_label = entry.displayDate %}
+    {% if date_label == null or date_label == '' %}
+      {% assign raw_start = entry.start_date | default: entry.startDate %}
+      {% assign raw_end = entry.end_date | default: entry.endDate %}
+      {% assign start_year = raw_start | split: '-' | first %}
+      {% assign end_year = raw_end | split: '-' | first | default: 'Present' %}
+      {% assign date_label = start_year | append: '–' | append: end_year %}
+    {% endif %}
+
+    <li class="list-group-item">
+      <div class="cv-timeline-entry">
+        <div class="date-column">
+          <span class="badge font-weight-bold danger-color-dark align-middle">{{ date_label }}</span>
+        </div>
+        <div class="cv-entry-content">
+          {% if entry.url %}
+            <div class="title font-weight-bold">
+              <a href="{{ entry.url }}" target="_blank" rel="noopener">{{ entry.name }}</a>
+            </div>
+          {% else %}
+            <div class="title font-weight-bold">{{ entry.name }}</div>
+          {% endif %}
+
+          {% if entry.fundingAgency %}
+            <div class="cv-funding-agency">{{ entry.fundingAgency }}</div>
+            <div class="cv-funding-meta">
+              {{ entry.role }}
+              <span aria-hidden="true">·</span> {{ entry.amount }}
+            </div>
+          {% elsif entry.summary %}
+            <p>{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          {% endif %}
+
+          {% if entry.highlights %}
+            <ul class="items">
+              {% for item in entry.highlights %}
+                <li>
+                  <span class="item">{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
