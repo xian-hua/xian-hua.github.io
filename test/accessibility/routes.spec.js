@@ -11,6 +11,16 @@ for (const route of routes) {
   });
 }
 
+test("site uses a fixed light theme without a theme toggle", async ({ page }) => {
+  for (const route of routes) {
+    await page.goto(route, { waitUntil: "networkidle" });
+    await expect(page.locator("#light-toggle")).toHaveCount(0);
+    await expect(page.locator('script[src*="theme.js"]')).toHaveCount(0);
+    await expect(page.locator("#highlight_theme_dark")).toHaveCount(0);
+    await expect(page.locator("body")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+  }
+});
+
 test("homepage contact line is accessible and wraps on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
