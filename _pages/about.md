@@ -14,7 +14,7 @@ profile:
     <p>Dongguan University of Technology</p>
     <p>Office: Room 1004, Zone A, Building 1, Songshan Lake Campus (新区1栋A区1004)</p>
 
-selected_papers: true
+selected_papers: false
 social: false
 
 announcements:

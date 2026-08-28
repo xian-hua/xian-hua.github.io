@@ -144,10 +144,9 @@ Jekyll::Hooks.register :pages, :post_render do |page|
       }
     CSS
   elsif page.url == "/"
-    page.output.gsub!(">selected publications<", ">Selected Publications<")
     SiteRenderFixes.inject_styles(page, "about-site-refinements", <<~CSS)
       .about-academic-links {
-        clear: both;
+        clear: none;
         display: flex;
         flex-wrap: wrap;
         gap: 0.4rem 1.1rem;
