@@ -8,6 +8,7 @@ seo_description: Academic homepage of Xianhua Yu (余显华), a tenure-track Ass
 profile:
   align: right
   image: xianhua-yu.png
+  image_alt: Portrait of Xianhua Yu (余显华)
   image_circular: false
   more_info: >
     <p>School of Electrical Engineering and Intelligentization</p>
@@ -30,7 +31,7 @@ latest_posts:
 
 <div class="about-contact-line" aria-label="Contact and academic profile">
   <span class="about-contact-item">Email: <a href="mailto:yuxianhua@dgut.edu.cn">yuxianhua@dgut.edu.cn</a></span>
-  <a class="about-contact-item" href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&hl=en" target="_blank" rel="external noopener">Google Scholar</a>
+  <a class="about-contact-item" href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ" target="_blank" rel="external noopener">Google Scholar</a>
 </div>
 
 <p class="research-identity">My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking. Across these areas, I develop and apply wireless AI and learning-driven signal processing methods.</p>

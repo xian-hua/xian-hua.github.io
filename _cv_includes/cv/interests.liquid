@@ -1,0 +1,10 @@
+{% comment %}Local research-focus renderer with separate topical and methodological rows.{% endcomment %}
+
+<div class="card-text font-weight-light cv-research-focus">
+  {% for entry in entries %}
+    <div class="interest-item">
+      <strong>{{ entry.name }}:</strong>
+      {% if entry.keywords %}{{ entry.keywords | join: '; ' }}{% endif %}
+    </div>
+  {% endfor %}
+</div>
