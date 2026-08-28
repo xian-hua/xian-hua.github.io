@@ -21,6 +21,9 @@
 - Corrected the IEEE Communications Magazine record to publication year 2026.
 - Corrected the IEEE Network DOI to `10.1109/MNET.004.2300013` after DOI-resolver verification.
 - Added a factual JSON Resume CV with only dates and appointments supported by the previous site.
+- Updated the CV with confirmed degree fields and dates, the formal Tatung University–Iowa State University joint dual-degree arrangement, the February–December 2024 postdoctoral appointment, the tenure-track title, and the office location.
+- Recorded both confirmed grants as principal investigator. Exact grant periods are January 2025–December 2027 and January 2027–December 2029; the public pages use year-only ranges for a cleaner layout.
+- ORCID and telephone details are intentionally omitted at the user's request.
 - Added restrained People and Teaching pages without demo names, courses, calendars, or skills.
 - News dates display month and year only because the previous site did not provide exact days.
 
@@ -76,11 +79,9 @@ External-link checking found no confirmed dead third-party content links. The lo
 2. Current students and group members: names, roles, research topics, profile links, photos, and preferred ordering.
 3. Teaching: course titles, semesters, level, role, and any public materials.
 4. A current PDF CV, if a download button is wanted.
-5. ORCID. A candidate identifier was found in third-party indexing but was deliberately not published without confirmation.
-6. Exact postdoctoral dates, degree disciplines, office room/phone, and whether the public title should be “Associate Professor” or “Tenure-track Associate Professor.”
-7. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
-8. A dedicated 1200 × 630 social-preview graphic and 180 × 180 Apple touch icon, if preferred over the current profile image and emoji favicon.
-9. Optional Google Analytics, Google Search Console, and Bing Webmaster verification identifiers.
+5. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
+6. A dedicated 1200 × 630 social-preview graphic and 180 × 180 Apple touch icon, if preferred over the current profile image and emoji favicon.
+7. Optional Google Analytics, Google Search Console, and Bing Webmaster verification identifiers.
 
 ## Rollback
 

@@ -1,12 +1,13 @@
 {
   "basics": {
     "name": "Xianhua Yu",
-    "label": "Associate Professor",
+    "label": "Tenure-track Associate Professor",
     "image": "/assets/img/xianhua-yu.png",
     "email": "yuxianhua@dgut.edu.cn",
     "url": "https://xian-hua.github.io/",
-    "summary": "Associate Professor at Dongguan University of Technology and member of the Dongguan Strategic Scientist Team.",
+    "summary": "Tenure-track Associate Professor at Dongguan University of Technology and member of the Dongguan Strategic Scientist Team.",
     "location": {
+      "address": "New Campus, Room 1A1004",
       "city": "Dongguan",
       "countryCode": "CN"
     },
@@ -26,33 +27,44 @@
   "work": [
     {
       "name": "Dongguan University of Technology",
-      "position": "Associate Professor",
+      "position": "Tenure-track Associate Professor",
       "startDate": "2024-12"
     },
     {
       "name": "Macau University of Science and Technology",
-      "position": "Postdoctoral Fellow"
+      "position": "Postdoctoral Fellow",
+      "startDate": "2024-02",
+      "endDate": "2024-12"
     }
   ],
   "education": [
     {
       "institution": "Macau University of Science and Technology",
       "studyType": "Ph.D.",
+      "area": "Electronic Information Technology",
+      "startDate": "2021",
       "endDate": "2024"
     },
     {
       "institution": "Iowa State University",
-      "studyType": "Joint M.S. degree",
+      "studyType": "M.S. (Joint Dual Degree)",
+      "area": "Electrical Engineering",
+      "startDate": "2019",
+      "summary": "Formal joint dual-degree program with Tatung University; both institutions conferred degrees.",
       "endDate": "2020"
     },
     {
       "institution": "Tatung University",
       "studyType": "M.S.",
+      "area": "Electrical Engineering",
+      "startDate": "2017",
       "endDate": "2020"
     },
     {
       "institution": "Tatung University",
       "studyType": "B.S.",
+      "area": "Electrical Engineering",
+      "startDate": "2013",
       "endDate": "2017"
     }
   ],
@@ -67,7 +79,7 @@
       "name": "面向环境散射通信的无线电检测与并行解码机理研究",
       "startDate": "2025",
       "endDate": "2027",
-      "summary": "广东省自然科学基金粤莞青年基金；经费：10 万元；角色：主持"
+      "summary": "广东省基础与应用基础研究基金东莞市联合基金（粤莞联合基金）青年基金项目；经费：10 万元；角色：主持"
     }
   ],
   "interests": [
