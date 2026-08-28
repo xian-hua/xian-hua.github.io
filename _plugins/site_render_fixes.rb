@@ -96,7 +96,7 @@ Jekyll::Hooks.register :pages, :post_render do |page|
     page.output.gsub!(/(<h3[^>]*>)Experience(<\/h3>)/, '\1Appointments\2')
     page.output.gsub!(/(<h3[^>]*>)Interests(<\/h3>)/, '\1Research Focus\2')
     page.output.gsub!(/(<h3[^>]*>)Projects(<\/h3>)/, '\1Research Funding\2')
-    page.output.sub!(/(<h3[^>]*>Research Funding<\/h3>)/, '\1<p class="cv-translation-note">English project titles are descriptive translations of the official Chinese titles.</p>')
+    page.output.sub!("<b>Location</b>", "<b>Office</b>")
 
     SiteRenderFixes.add_cv_service(page)
     page.output.gsub!(/<h3([^>]*class="[^"]*card-title[^"]*"[^>]*)>/, '<h2\1>')
@@ -173,14 +173,6 @@ Jekyll::Hooks.register :pages, :post_render do |page|
 
       .cv-location-line {
         display: block;
-      }
-
-      .cv-translation-note {
-        color: var(--global-text-color);
-        color: color-mix(in srgb, var(--global-text-color) 70%, var(--global-bg-color));
-        font-size: 0.875rem;
-        font-weight: 400;
-        margin: 0.1rem 0 0.75rem;
       }
 
       @media (max-width: 576px) {

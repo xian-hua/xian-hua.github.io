@@ -108,14 +108,19 @@ test("CV desktop date grid keeps labels and content aligned", async ({ page }) =
   expect(layout.every((entry) => entry.whiteSpace === "nowrap" && entry.textRects === 1 && entry.textFits)).toBe(true);
   expect(Math.max(...layout.map((entry) => entry.contentLeft)) - Math.min(...layout.map((entry) => entry.contentLeft))).toBeLessThan(1);
 
-  await expect(page.locator(".cv-translation-note")).toHaveText(
-    "English project titles are descriptive translations of the official Chinese titles."
-  );
+  await expect(page.locator(".cv-translation-note")).toHaveCount(0);
+  await expect(page.locator(".cv")).not.toContainText("English project titles are descriptive translations of the official Chinese titles.");
   await expect(page.locator(".cv")).not.toContainText("Appointment period:");
   await expect(page.locator(".cv")).not.toContainText("project period:");
   await expect(page.locator(".cv-funding-meta")).toHaveText(["Principal Investigator · RMB 300,000", "Principal Investigator · RMB 100,000"]);
   await expect(page.locator(".cv-primary-links")).toHaveCount(0);
   await expect(page.locator(".post-header").getByRole("link", { name: /Email|Google Scholar|Homepage/ })).toHaveCount(0);
+
+  const contactCard = page.getByRole("heading", { name: "Contact Information", exact: true }).locator("..");
+  await expect(contactCard.locator("b")).toHaveText(["Name", "Professional Title", "Email", "Office"]);
+  await expect(contactCard).not.toContainText("Location");
+  await expect(contactCard).not.toContainText("Website");
+  await expect(contactCard.locator('a[href="https://xian-hua.github.io/"]')).toHaveCount(0);
 });
 
 test("CV mobile timeline stacks without horizontal overflow", async ({ page }) => {
