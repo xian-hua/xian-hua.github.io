@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: Tenure-track Associate Professor &middot; Dongguan University of Technology
 

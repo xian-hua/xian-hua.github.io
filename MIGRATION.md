@@ -30,6 +30,7 @@
 - Removed Research Grants from the homepage while retaining both confirmed grants in the CV; a separate Projects page remains intentionally omitted until richer project material is available.
 - Capitalized the Publications page title, removed the implementation-focused BibTeX description and filter box, and increased publication-year contrast.
 - Standardized the CV location as a concise bilingual office address without a redundant city suffix.
+- Capitalized the About navigation label and disabled the unnecessary site-wide keyboard search to keep the three-item navigation concise.
 - News dates display month and year only because the previous site did not provide exact days.
 
 ## Removed placeholder content
