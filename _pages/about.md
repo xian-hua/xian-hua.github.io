@@ -11,7 +11,7 @@ profile:
   more_info: >
     <p>School of Electrical Engineering and Intelligentization</p>
     <p>Dongguan University of Technology</p>
-    <p>Office: New Campus, Room 1A1004</p>
+    <p>Office: New Campus, Building 1, Zone A, Room 1004</p>
     <p>Dongguan, China</p>
 
 selected_papers: true
@@ -42,13 +42,9 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
 - **面向无源物联网的标签通感协同推断与跨场景适配机理研究** — 国家自然科学基金青年科学基金项目（C类），2027–2029，30 万元，主持。
 - **面向环境散射通信的无线电检测与并行解码机理研究** — 广东省基础与应用基础研究基金东莞市联合基金（粤莞联合基金）青年基金项目，2025–2027，10 万元，主持。
 
-## Students & People
-
-Verified profiles of current students and group members were not available on the previous website. The [People page](/people/) is ready for confirmed profiles and research roles.
-
 ## Contact
 
-For research collaboration and student inquiries, please email [yuxianhua@dgut.edu.cn](mailto:yuxianhua@dgut.edu.cn). My office is New Campus, Room 1A1004.
+For research collaboration and student inquiries, please email [yuxianhua@dgut.edu.cn](mailto:yuxianhua@dgut.edu.cn). My office is New Campus, Building 1, Zone A, Room 1004.
 
 ## [News](/news/)
 

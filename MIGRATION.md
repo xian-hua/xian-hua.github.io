@@ -12,11 +12,11 @@
 
 ## Migrated content
 
-- Rebuilt the homepage around About, Research Interests, News, Selected Publications, Students & People, and Contact.
+- Rebuilt the homepage around About, Research Interests, News, Selected Publications, and Contact.
 - Preserved the existing biography, research interests, eight original News items, profile photo, email address, Google Scholar profile, and GitHub profile.
 - Added a ninth News item for the National Natural Science Foundation of China Young Scientists Fund (C) grant.
-- Consolidated 14 publication records into `_bibliography/papers.bib`.
-- Added verified DOI links for all 14 papers and existing arXiv identifiers for four papers.
+- Consolidated 20 IEEE Author Profile publication records into `_bibliography/papers.bib`.
+- Added verified DOI links for all 20 papers and existing arXiv identifiers where available.
 - Marked five representative papers as selected for the homepage.
 - Corrected the IEEE Communications Magazine record to publication year 2026.
 - Corrected the IEEE Network DOI to `10.1109/MNET.004.2300013` after DOI-resolver verification.
@@ -24,7 +24,8 @@
 - Updated the CV with confirmed degree fields and dates, the formal Tatung University–Iowa State University joint dual-degree arrangement, the February–December 2024 postdoctoral appointment, the tenure-track title, and the office location.
 - Recorded both confirmed grants as principal investigator. Exact grant periods are January 2025–December 2027 and January 2027–December 2029; the public pages use year-only ranges for a cleaner layout.
 - ORCID and telephone details are intentionally omitted at the user's request.
-- Added restrained People and Teaching pages without demo names, courses, calendars, or skills.
+- Kept the Teaching page hidden until confirmed course information is available; the People page is intentionally omitted for now.
+- Added a CV-only style correction that removes unintended native list markers beside date badges.
 - News dates display month and year only because the previous site did not provide exact days.
 
 ## Removed placeholder content
@@ -63,25 +64,24 @@ baseurl:
 - Responsive images: source PNG plus 480, 800, and 1400 pixel WebP variants generated.
 - PurgeCSS: processed eight generated CSS files successfully.
 - Generated HTML crawl: 7 HTML pages, 0 broken internal links.
-- DOI resolver: all 14 DOI links returned valid redirects.
+- DOI resolver: all publication DOI links returned valid redirects at the time of the corresponding update.
 - Desktop browser at 1366 px: no horizontal overflow, profile image loaded, no console errors.
 - Mobile browser at 390 px: no horizontal overflow, profile image loaded, navigation expanded correctly, no console errors.
-- Homepage: 5 selected publications and 8 News rows rendered.
+- Homepage: 5 selected publications and 9 News rows rendered.
 - SEO outputs: canonical URL, description, keywords, Open Graph image, Twitter card, Schema.org JSON-LD, sitemap, robots.txt, and emoji favicon generated.
 - Production deploy workflow, Pages deployment, and post-deployment broken-link workflow: passed.
-- Live homepage, Publications, News, People, CV, sitemap, and robots routes: HTTP 200 on 2026-08-28.
+- Live homepage, Publications, News, CV, sitemap, and robots routes: HTTP 200 on 2026-08-28.
 
-External-link checking found no confirmed dead third-party content links. The local network timed out on arXiv, Google Scholar, and one Google Sites page; these links were retained because they are existing or independently verified academic-profile links. Before deployment, the old public site returned 404 for the new `/news/` and `/people/` routes; both routes are now live and passed the generated-site internal crawl.
+External-link checking found no confirmed dead third-party content links. The local network timed out on arXiv, Google Scholar, and one Google Sites page; these links were retained because they are existing or independently verified academic-profile links. Before deployment, the old public site returned 404 for the new `/news/` route; the route is now live and passed the generated-site internal crawl. The `/people/` route was subsequently removed at the user's request.
 
 ## Information requiring confirmation
 
 1. Full titles, author lists, links, and final bibliographic details for the 2026 TMC, TCOM, ICDCS, VTC-Spring workshop, ICC workshop, and GLOBECOM News items.
-2. Current students and group members: names, roles, research topics, profile links, photos, and preferred ordering.
-3. Teaching: course titles, semesters, level, role, and any public materials.
-4. A current PDF CV, if a download button is wanted.
-5. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
-6. A dedicated 1200 × 630 social-preview graphic and 180 × 180 Apple touch icon, if preferred over the current profile image and emoji favicon.
-7. Optional Google Analytics, Google Search Console, and Bing Webmaster verification identifiers.
+2. Teaching: course titles, semesters, level, role, and any public materials.
+3. A current PDF CV, if a download button is wanted.
+4. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
+5. A dedicated 1200 × 630 social-preview graphic and 180 × 180 Apple touch icon, if preferred over the current profile image and emoji favicon.
+6. Optional Google Analytics, Google Search Console, and Bing Webmaster verification identifiers.
 
 ## Rollback
 
