@@ -34,7 +34,8 @@
       "name": "Macau University of Science and Technology",
       "position": "Postdoctoral Fellow",
       "startDate": "2024-02",
-      "endDate": "2024-12"
+      "endDate": "2024-12",
+      "summary": "Appointment period: February 2024–December 2024."
     }
   ],
   "education": [
@@ -50,8 +51,8 @@
       "studyType": "M.S. (Joint Dual Degree)",
       "area": "Electrical Engineering",
       "startDate": "2019",
-      "summary": "Formal joint dual-degree program with Tatung University; both institutions conferred degrees.",
-      "endDate": "2020"
+      "endDate": "2020",
+      "highlights": ["Formal joint dual-degree program with Tatung University; both institutions conferred degrees."]
     },
     {
       "institution": "Tatung University",
