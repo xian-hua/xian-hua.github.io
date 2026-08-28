@@ -12,6 +12,7 @@ profile:
     <p>School of Electrical Engineering and Intelligentization</p>
     <p>Dongguan University of Technology</p>
     <p>Office: New Campus, Building 1, Zone A, Room 1004（新区1栋A区1004）</p>
+    <p>Email: <a href="mailto:yuxianhua@dgut.edu.cn">yuxianhua@dgut.edu.cn</a></p>
 
 selected_papers: true
 social: false
@@ -35,16 +36,6 @@ I joined the School of Electrical Engineering and Intelligentization at Dongguan
 - Semantic Communication
 - Low-altitude Intelligent Networking
 - Wireless AI
-
-## Research Grants
-
-- **面向无源物联网的标签通感协同推断与跨场景适配机理研究** — 国家自然科学基金青年科学基金项目（C类），2027.01–2029.12，30 万元，主持。
-- **面向环境散射通信的无线电检测与并行解码机理研究** — 广东省基础与应用基础研究基金东莞市联合基金（粤莞联合基金）青年基金项目，2025.01–2027.12，10 万元，主持。
-
-## Contact
-
-- **Email:** [yuxianhua@dgut.edu.cn](mailto:yuxianhua@dgut.edu.cn)
-- **Google Scholar:** [Xianhua Yu](https://scholar.google.com/citations?user=mR4CJ4IAAAAJ&hl=zh-CN)
 
 ## [News](/news/)
 
