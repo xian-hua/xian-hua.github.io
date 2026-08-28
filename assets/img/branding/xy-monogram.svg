@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">XY monogram</title>
+  <desc id="description">A simple high-contrast monogram for Xianhua Yu.</desc>
+  <rect width="512" height="512" rx="84" fill="#1c1d20"/>
+  <rect x="62" y="62" width="18" height="388" rx="9" fill="#c124b3"/>
+  <text x="274" y="326" fill="#ffffff" font-family="Arial, sans-serif" font-size="194" font-weight="700" letter-spacing="-18" text-anchor="middle">XY</text>
+</svg>

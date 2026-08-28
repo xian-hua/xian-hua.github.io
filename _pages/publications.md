@@ -2,6 +2,7 @@
 layout: page
 permalink: /publications/
 title: Publications
+seo_description: Peer-reviewed journal and conference publications by Xianhua Yu in intelligent wireless communications and signal processing.
 nav: true
 nav_order: 1
 ---

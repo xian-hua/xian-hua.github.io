@@ -7,14 +7,14 @@ first_name: Xianhua
 middle_name:
 last_name: Yu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Academic homepage of Xianhua Yu, Tenure-track Associate Professor at Dongguan University of Technology. Research interests include Ambient IoT, semantic communication, low-altitude intelligent networking, and wireless AI.
+  Academic homepage of Xianhua Yu (余显华), a tenure-track Associate Professor at Dongguan University of Technology working on ambient IoT, backscatter communications, semantic communications, low-altitude intelligent networking, and wireless AI.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: Xianhua Yu, 余显华, Ambient IoT, semantic communication, low-altitude intelligent networking, wireless AI, Dongguan University of Technology
+keywords: Xianhua Yu, 余显华, Dongguan University of Technology, Ambient IoT, Backscatter Communications, Semantic Communications, Low-Altitude Intelligent Networking, Wireless AI
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 📡 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
+icon: favicon.svg # image name in /assets/img/
+apple_touch_icon: apple-touch-icon.png # 180x180 PNG in /assets/img/
 
 url: https://xian-hua.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -93,7 +93,7 @@ al_folio:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: false
 socials_in_search: false
 posts_in_search: false
@@ -109,7 +109,7 @@ max_width: 930px
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Include Schema.org in the HTML head
-og_image: https://xian-hua.github.io/assets/img/xianhua-yu.png # The site-wide (default for all links) Open Graph preview image
+og_image: https://xian-hua.github.io/assets/img/social-preview.png # 1200x630 site-wide Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -126,7 +126,7 @@ analytics:
 enable_simple_analytics: false # Simple Analytics identifies a site by its domain, so it has no ID to set above
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
-google_site_verification: # your google-site-verification ID (Google Search Console)
+google_site_verification: # paste only the real Google Search Console HTML-tag token here; leave empty until issued
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------

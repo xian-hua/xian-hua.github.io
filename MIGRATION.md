@@ -45,7 +45,7 @@ The migration removes the Academic Pages runtime and all demo material, includin
 
 ## Deployment
 
-The `Deploy site` workflow builds on pushes to `master` or `main`, purges unused CSS, and deploys `_site` to `gh-pages`. Pull requests build but do not deploy. A separate workflow checks generated internal links after a successful deployment, and the accessibility workflow can be started manually.
+The `Deploy site` workflow builds on pushes to `master`, purges unused CSS, and deploys `_site` to `gh-pages`. Pull requests build but do not deploy. A separate workflow checks generated internal links after a successful build, Axe runs automatically on relevant pull requests and manually on demand, and an independent weekly workflow audits external links without blocking normal deployment.
 
 Applied repository settings:
 
@@ -82,11 +82,9 @@ External-link checking found no confirmed dead third-party content links. The lo
 ## Information requiring confirmation
 
 1. Full titles, author lists, links, and final bibliographic details for the 2026 TMC, TCOM, ICDCS, VTC-Spring workshop, ICC workshop, and GLOBECOM News items.
-2. Teaching: course titles, semesters, level, role, and any public materials.
-3. A current PDF CV, if a download button is wanted.
-4. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
-5. A dedicated 1200 × 630 social-preview graphic and 180 × 180 Apple touch icon, if preferred over the current profile image and emoji favicon.
-6. Optional Google Analytics, Google Search Console, and Bing Webmaster verification identifiers.
+2. A current PDF CV, if a download button is wanted.
+3. Author-hosted PDFs, code repositories, project pages, videos, or slides for publications.
+4. A real Google Search Console ownership token and the account-side sitemap/indexing actions documented in `SEARCH_INDEXING.md`.
 
 ## Rollback
 

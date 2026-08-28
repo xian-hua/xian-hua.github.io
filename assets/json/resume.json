@@ -5,9 +5,9 @@
     "image": "/assets/img/xianhua-yu.png",
     "email": "yuxianhua@dgut.edu.cn",
     "url": "https://xian-hua.github.io/",
-    "summary": "Tenure-track Associate Professor at Dongguan University of Technology and member of the Dongguan Strategic Scientist Team.",
+    "summary": "Tenure-track Associate Professor at Dongguan University of Technology working on resource-efficient intelligent wireless systems, including ambient IoT, semantic communications, low-altitude intelligent networking, and wireless AI. Principal investigator of projects supported by the National Natural Science Foundation of China and the Guangdong Basic and Applied Basic Research Foundation.",
     "location": {
-      "address": "New Campus, Building 1, Zone A, Room 1004（新区1栋A区1004）"
+      "address": "Room 1004, Zone A, Building 1, Songshan Lake Campus (新区1栋A区1004)"
     },
     "profiles": [
       {
@@ -64,22 +64,27 @@
   ],
   "projects": [
     {
-      "name": "面向无源物联网的标签通感协同推断与跨场景适配机理研究",
-      "startDate": "2027.01",
-      "endDate": "2029.12",
-      "summary": "国家自然科学基金青年科学基金项目（C类）；经费：30 万元；角色：主持"
+      "name": "Collaborative sensing-and-communication inference and cross-scenario adaptation for passive-IoT tags (面向无源物联网的标签通感协同推断与跨场景适配机理研究)",
+      "startDate": "2027-01",
+      "endDate": "2029-12",
+      "summary": "National Natural Science Foundation of China (NSFC), Young Scientists Fund (Category C); role: Principal Investigator; project period: Jan. 2027–Dec. 2029; amount: RMB 300,000."
     },
     {
-      "name": "面向环境散射通信的无线电检测与并行解码机理研究",
-      "startDate": "2025.01",
-      "endDate": "2027.12",
-      "summary": "广东省基础与应用基础研究基金东莞市联合基金（粤莞联合基金）青年基金项目；经费：10 万元；角色：主持"
+      "name": "Radio detection and parallel decoding mechanisms for ambient backscatter communications (面向环境散射通信的无线电检测与并行解码机理研究)",
+      "startDate": "2025-01",
+      "endDate": "2027-12",
+      "summary": "Guangdong Basic and Applied Basic Research Foundation, Guangdong–Dongguan Joint Fund Young Scientists Program; role: Principal Investigator; project period: Jan. 2025–Dec. 2027; amount: RMB 100,000."
     }
   ],
   "interests": [
     {
       "name": "Research",
-      "keywords": ["Ambient IoT", "Semantic Communication", "Low-altitude Intelligent Networking", "Wireless AI"]
+      "keywords": [
+        "Ambient IoT and Backscatter Communications",
+        "Semantic Communications",
+        "Low-Altitude Intelligent Networking",
+        "Wireless AI and Learning-Driven Signal Processing"
+      ]
     }
   ]
 }

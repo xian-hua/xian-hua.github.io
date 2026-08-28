@@ -1,7 +1,8 @@
 ---
 layout: page
-title: news
+title: News
 permalink: /news/
+seo_description: Research news and academic updates from Xianhua Yu at Dongguan University of Technology.
 ---
 
 <div class="news">
