@@ -116,6 +116,12 @@ test("homepage research positioning and office location are consistent", async (
   await expect(novemberNews.locator("td")).toHaveText(
     "Co-organized the 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems” (2025年广东省研究生学术论坛“大模型与存储系统前沿学术分论坛”), with Prof. Liuqing Yang as the keynote speaker at the opening ceremony."
   );
+
+  const newestNews = page.locator(".news tr").first();
+  await expect(newestNews.locator("th")).toHaveText("Aug 2026");
+  await expect(newestNews.locator("td")).toHaveText(
+    "One paper has been accepted by IEEE Wireless Communications Letters. Congratulations to Zhenguan!"
+  );
 });
 
 test("CV desktop date grid keeps labels and content aligned", async ({ page }) => {

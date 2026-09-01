@@ -54,7 +54,7 @@ I am a tenure-track Associate Professor in the School of Electrical Engineering 
   <div class="table-responsive" style="max-height: 60vw">
     <table class="table table-sm table-borderless">
       {% assign recent_news = site.news | reverse %}
-      {% for item in recent_news limit: 8 %}
+      {% for item in recent_news limit: 9 %}
         <tr>
           <th scope="row" style="width: 20%">{{ item.date | date: '%b %Y' }}</th>
           <td>{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}</td>
