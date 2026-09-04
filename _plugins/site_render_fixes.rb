@@ -96,7 +96,7 @@ Jekyll::Hooks.register :pages, :post_render do |page|
     )
     page.output.gsub!(
       "Room 1004-2, Zone A, Building 1, International Cooperation and Innovation Zone (国际合作创新区1栋A区1004-2), ",
-      '<span class="cv-location-line">Room 1004-2, Zone A, Building 1</span><span class="cv-location-line">International Cooperation and Innovation Zone</span><span class="cv-location-line">(国际合作创新区1栋A区1004-2)</span> '
+      '<span class="cv-location-line cv-location-nowrap">Room 1004-2, Zone A, Building 1</span><span class="cv-location-line">International Cooperation and Innovation Zone</span><span class="cv-location-line cv-location-nowrap">(国际合作创新区1栋A区1004-2)</span> '
     )
     page.output.gsub!(/(<h3[^>]*>)Experience(<\/h3>)/, '\1Appointments\2')
     page.output.gsub!(/(<h3[^>]*>)Interests(<\/h3>)/, '\1Research Focus\2')
@@ -181,6 +181,11 @@ Jekyll::Hooks.register :pages, :post_render do |page|
       }
 
       @media (max-width: 576px) {
+        .cv-location-nowrap {
+          letter-spacing: -0.015em;
+          white-space: nowrap;
+        }
+
         .cv .cv-timeline-entry {
           grid-template-columns: minmax(0, 1fr);
           row-gap: 0.55rem;

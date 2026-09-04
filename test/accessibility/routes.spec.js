@@ -239,6 +239,20 @@ test("CV mobile timeline stacks without horizontal overflow", async ({ page }) =
   );
   expect(layout.every((entry) => entry.dateBottom <= entry.contentTop && entry.textRects === 1 && entry.textFits)).toBe(true);
   expect(layout.every((entry) => entry.badgeRight <= 390)).toBe(true);
+  const compactOfficeLines = await page.locator(".cv-location-nowrap").evaluateAll((lines) =>
+    lines.map((line) => {
+      const range = document.createRange();
+      range.selectNodeContents(line);
+      const rect = line.getBoundingClientRect();
+      return {
+        textRects: [...range.getClientRects()].length,
+        fits: line.scrollWidth <= line.clientWidth,
+        right: rect.right,
+      };
+    })
+  );
+  expect(compactOfficeLines).toHaveLength(2);
+  expect(compactOfficeLines.every((line) => line.textRects === 1 && line.fits && line.right <= 390)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
   await expect(page.locator(".cv-funding-list")).toContainText("面向无源物联网的标签通感协同推断与跨场景适配机理研究");
   await expect(page.locator(".cv-funding-list")).toContainText("面向环境散射通信的无线电检测与并行解码机理研究");
