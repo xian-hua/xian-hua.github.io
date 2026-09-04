@@ -95,8 +95,8 @@ Jekyll::Hooks.register :pages, :post_render do |page|
       '\1<a href="mailto:yuxianhua@dgut.edu.cn">yuxianhua@dgut.edu.cn</a>\2'
     )
     page.output.gsub!(
-      "Room 1004, Zone A, Building 1, International Cooperation and Innovation Zone (国际合作创新区1栋A区1004), ",
-      '<span class="cv-location-line">Room 1004, Zone A, Building 1</span><span class="cv-location-line">International Cooperation and Innovation Zone</span><span class="cv-location-line">(国际合作创新区1栋A区1004)</span> '
+      "Room 1004-2, Zone A, Building 1, International Cooperation and Innovation Zone (国际合作创新区1栋A区1004-2), ",
+      '<span class="cv-location-line">Room 1004-2, Zone A, Building 1</span><span class="cv-location-line">International Cooperation and Innovation Zone</span><span class="cv-location-line">(国际合作创新区1栋A区1004-2)</span> '
     )
     page.output.gsub!(/(<h3[^>]*>)Experience(<\/h3>)/, '\1Appointments\2')
     page.output.gsub!(/(<h3[^>]*>)Interests(<\/h3>)/, '\1Research Focus\2')

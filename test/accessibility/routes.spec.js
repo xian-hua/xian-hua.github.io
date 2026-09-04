@@ -97,9 +97,9 @@ test("homepage research positioning and office location are consistent", async (
   await expect(page.locator(".profile .more-info p")).toHaveText([
     "School of Electrical Engineering and Intelligentization",
     "Dongguan University of Technology",
-    "Office: Room 1004, Zone A, Building 1",
+    "Office: Room 1004-2, Zone A, Building 1",
     "International Cooperation and Innovation Zone",
-    "(国际合作创新区1栋A区1004)",
+    "(国际合作创新区1栋A区1004-2)",
   ]);
 
   const addressLines = await page.locator(".profile-office-line").evaluateAll((lines) =>
@@ -183,9 +183,9 @@ test("CV desktop date grid keeps labels and content aligned", async ({ page }) =
   await expect(contactCard.locator("b")).toHaveText(["Name", "Professional Title", "Email", "Office"]);
   await expect(contactCard.getByRole("link", { name: "yuxianhua@dgut.edu.cn" })).toHaveAttribute("href", "mailto:yuxianhua@dgut.edu.cn");
   await expect(contactCard.locator(".cv-location-line")).toHaveText([
-    "Room 1004, Zone A, Building 1",
+    "Room 1004-2, Zone A, Building 1",
     "International Cooperation and Innovation Zone",
-    "(国际合作创新区1栋A区1004)",
+    "(国际合作创新区1栋A区1004-2)",
   ]);
   await expect(contactCard).not.toContainText("Location");
   await expect(contactCard).not.toContainText("Website");

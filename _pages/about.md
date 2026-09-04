@@ -13,9 +13,9 @@ profile:
   more_info: >
     <p>School of Electrical Engineering and Intelligentization</p>
     <p>Dongguan University of Technology</p>
-    <p class="profile-office-start profile-office-line">Office: Room 1004, Zone A, Building 1</p>
+    <p class="profile-office-start profile-office-line">Office: Room 1004-2, Zone A, Building 1</p>
     <p class="profile-office-line">International Cooperation and Innovation Zone</p>
-    <p class="profile-office-line">(国际合作创新区1栋A区1004)</p>
+    <p class="profile-office-line">(国际合作创新区1栋A区1004-2)</p>
 
 selected_papers: false
 social: false
