@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One conference paper has been accepted by an **IEEE VTC-Spring workshop**.
+Our paper, [“UAV-Assisted Anti-Jamming Relay Design for Reliable Federated Learning in Mobile Networks”](https://events.vtsociety.org/vtc2026-spring/wp-content/uploads/sites/47/2026/03/VTC2026-Accepted-Papers.pdf), has been accepted by an **IEEE VTC-Spring workshop**.

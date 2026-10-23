@@ -120,7 +120,7 @@ test("homepage research positioning and office location are consistent", async (
   const newestNews = page.locator(".news tr").first();
   await expect(newestNews.locator("th")).toHaveText("Aug 2026");
   await expect(newestNews.locator("td")).toHaveText(
-    "One paper has been accepted by IEEE Wireless Communications Letters. Congratulations to Zhenguan!"
+    "Our paper, “Block-Correlation-Based Outage Analysis for FAS-Assisted Wireless Powered Communication”, has been accepted by IEEE Wireless Communications Letters. Congratulations to Zhenguan!"
   );
 });
 
