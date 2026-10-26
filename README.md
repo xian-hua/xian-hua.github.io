@@ -17,7 +17,7 @@ No generated site files are edited by hand. Publications should be maintained in
 
 ## Local checks
 
-The GitHub Actions workflows use Ruby 3.3.5, Node 24, and ImageMagick. JavaScript tools are locked in `package-lock.json`; workflows use `npm ci` and do not install floating global packages.
+The GitHub Actions workflows use the latest Ruby 3.3 patch release (`ruby-version: "3.3"`), Node 24, and ImageMagick. The short Ruby version keeps the workflows compatible with newer GitHub runner images. JavaScript tools are locked in `package-lock.json`; workflows use `npm ci` and do not install floating global packages.
 
 ```sh
 npm ci
