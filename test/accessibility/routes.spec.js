@@ -254,8 +254,8 @@ test("CV mobile timeline stacks without horizontal overflow", async ({ page }) =
   expect(compactOfficeLines).toHaveLength(2);
   expect(compactOfficeLines.every((line) => line.textRects === 1 && line.fits && line.right <= 390)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-  await expect(page.locator(".cv-funding-list")).toContainText("面向无源物联网的标签通感协同推断与跨场景适配机理研究");
-  await expect(page.locator(".cv-funding-list")).toContainText("面向环境散射通信的无线电检测与并行解码机理研究");
+  await expect(page.locator(".cv-funding-list")).toContainText("面向无源物联网的XXX研究");
+  await expect(page.locator(".cv-funding-list")).toContainText("面向环境散射通信的XXX研究");
 });
 test("heading levels do not skip within primary content", async ({ page }) => {
   for (const route of routes) {
