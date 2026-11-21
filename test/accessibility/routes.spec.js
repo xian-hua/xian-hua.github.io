@@ -111,15 +111,20 @@ test("homepage research positioning and office location are consistent", async (
   );
   expect(addressLines).toEqual([1, 1, 1]);
 
+  const homepageNews = await page.locator(".news tr").allInnerTexts();
+  await page.goto("/news/", { waitUntil: "networkidle" });
+  const archiveNews = await page.locator(".news tr").allInnerTexts();
+  expect(homepageNews).toEqual(archiveNews.slice(0, 9));
+
   const novemberNews = page.locator(".news tr").filter({ hasText: "Nov 2025" });
   await expect(novemberNews).toHaveCount(1);
   await expect(novemberNews.locator("td")).toHaveText(
     "Co-organized the 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems” (2025年广东省研究生学术论坛“大模型与存储系统前沿学术分论坛”), with Prof. Liuqing Yang as the keynote speaker at the opening ceremony."
   );
 
-  const newestNews = page.locator(".news tr").first();
-  await expect(newestNews.locator("th")).toHaveText("Aug 2026");
-  await expect(newestNews.locator("td")).toHaveText(
+  const wclNews = page.locator(".news tr").filter({ hasText: "Block-Correlation-Based Outage Analysis" });
+  await expect(wclNews.locator("th")).toHaveText("Aug 2026");
+  await expect(wclNews.locator("td")).toHaveText(
     "Our paper, “Block-Correlation-Based Outage Analysis for FAS-Assisted Wireless Powered Communication”, has been accepted by IEEE Wireless Communications Letters. Congratulations to Zhenguan!"
   );
 });
