@@ -12,12 +12,29 @@ for (const width of [1366, 390]) {
     await expect(wcl.locator(".author")).toHaveText(
       "Zhenguan Wu, Xiazhi Lai, Junteng Yao, Xianhua Yu, Tuo Wu, Naofal Al-Dhahir, and Fumiyuki Adachi"
     );
-    await expect(wcl.locator('a[href="https://doi.org/10.1109/LWC.2026.3729739"]')).toBeVisible();
-    await wcl.locator("a.bibtex").click();
-    await expect(wcl.locator("div.bibtex")).toBeVisible();
-    await expect(wcl.locator("div.bibtex")).toContainText("5130--5134");
-    await wcl.locator("a.bibtex").click();
-    await expect(wcl.locator("div.bibtex")).not.toBeVisible();
+    const doi = wcl.locator('a[href="https://doi.org/10.1109/LWC.2026.3729739"]');
+    const bib = wcl.getByRole("button", { name: "Bib", exact: true });
+    const panel = wcl.locator("div.bibtex");
+    await expect(wcl.locator(".periodical").first()).toHaveText("IEEE Wireless Communications Letters, vol. 15, pp. 5130–5134, 2026");
+    await expect(bib).toHaveAttribute("aria-controls", await panel.getAttribute("id"));
+    await expect(bib).toHaveAttribute("aria-expanded", "false");
+    await expect(panel).toBeHidden();
+    await doi.focus();
+    await page.keyboard.press("Tab");
+    await expect(bib).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(bib).toHaveAttribute("aria-expanded", "true");
+    await expect(panel).toBeVisible();
+    await expect(panel).toContainText("5130--5134");
+    await page.keyboard.press("Tab");
+    await expect(panel.locator("pre")).toBeFocused();
+    await page.keyboard.press("Shift+Tab");
+    await page.keyboard.press("Space");
+    await expect(bib).toHaveAttribute("aria-expanded", "false");
+    await expect(bib).toBeFocused();
+    await expect(panel).toBeHidden();
+    await page.keyboard.press("Tab");
+    expect(await wcl.evaluate((entry) => entry.contains(document.activeElement))).toBe(false);
 
     const iccc = page.locator("#liang2026beam");
     await expect(iccc).toHaveCount(1);
@@ -28,17 +45,18 @@ for (const width of [1366, 390]) {
     await expect(vtc).toHaveCount(1);
     await expect(vtc.locator(".periodical").first()).toContainText("2026 IEEE 103rd Vehicular Technology Conference (VTC2026-Spring)");
     await expect(vtc.locator('a[href="https://doi.org/10.1109/VTC2026-Spring68026.2026.11757769"]')).toBeVisible();
-    await vtc.locator("a.bibtex").click();
+    await expect(vtc.locator(".periodical").first()).toContainText("pp. 1–6, Jun 2026");
+    await vtc.getByRole("button", { name: "Bib", exact: true }).click();
     await expect(vtc.locator("div.bibtex")).toContainText("pages = {1--6}");
-    await vtc.locator("a.bibtex").click();
+    await vtc.getByRole("button", { name: "Bib", exact: true }).click();
 
     const tmc = page.locator("#qin2026fairness");
-    await expect(tmc.locator(".periodical").first()).toContainText("Nov 2026");
-    await tmc.locator("a.bibtex").click();
+    await expect(tmc.locator(".periodical").first()).toContainText("vol. 25, no. 11, pp. 21330–21344, Nov 2026");
+    await tmc.getByRole("button", { name: "Bib", exact: true }).click();
     await expect(tmc.locator("div.bibtex")).toContainText("volume = {25}");
     await expect(tmc.locator("div.bibtex")).toContainText("number = {11}");
     await expect(tmc.locator("div.bibtex")).toContainText("pages = {21330--21344}");
-    await tmc.locator("a.bibtex").click();
+    await tmc.getByRole("button", { name: "Bib", exact: true }).click();
     await expect(tmc.locator("div.bibtex")).not.toBeVisible();
 
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
@@ -56,6 +74,9 @@ for (const width of [1366, 390]) {
       await expect(news.getByText("IEEE Journal on Selected Areas in Communications", { exact: true })).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       if (route === "/") {
+        await expect(news.locator("tr")).toHaveCount(3);
+        expect(await news.evaluate((element) => element.scrollHeight <= element.clientHeight + 1)).toBe(true);
+        await expect(page.getByRole("link", { name: "View all news" })).toHaveAttribute("href", "/news/");
         await page.screenshot({ path: test.info().outputPath(`home-${width}.png`), fullPage: true });
       } else {
         const wcl = news.locator("tr").filter({ hasText: "Block-Correlation-Based Outage Analysis" });

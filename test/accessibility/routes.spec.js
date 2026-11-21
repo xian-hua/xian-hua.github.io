@@ -57,6 +57,14 @@ test("homepage contact line is accessible and wraps on mobile", async ({ page })
   }));
   expect(layout.right).toBeLessThanOrEqual(layout.viewport);
   expect(layout.pageWidth).toBeLessThanOrEqual(layout.viewport);
+  const contact = await contactLine.boundingBox();
+  const lead = await page.locator(".research-identity").boundingBox();
+  const photo = await page.locator(".profile img").boundingBox();
+  const office = await page.locator(".profile .more-info").boundingBox();
+  expect(contact.y + contact.height).toBeLessThanOrEqual(lead.y);
+  expect(lead.y + lead.height).toBeLessThanOrEqual(photo.y);
+  expect(photo.x + photo.width).toBeLessThan(office.x);
+  expect(office.y + office.height).toBeLessThan(844);
 });
 
 test("mobile navigation expands and collapses with the preserved three links", async ({ page }) => {
@@ -73,15 +81,6 @@ test("mobile navigation expands and collapses with the preserved three links", a
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 
-test("publication Bib button still opens its bibliography panel", async ({ page }) => {
-  await page.goto("/publications/", { waitUntil: "networkidle" });
-  const button = page.locator("a.bibtex.btn").first();
-  const panel = page.locator("div.bibtex.hidden").first();
-  await expect(button).toBeVisible();
-  await button.click();
-  await expect(panel).toBeVisible();
-});
-
 test("homepage research positioning and office location are consistent", async ({ page }) => {
   await page.setViewportSize({ width: 1792, height: 850 });
   await page.goto("/", { waitUntil: "networkidle" });
@@ -91,7 +90,7 @@ test("homepage research positioning and office location are consistent", async (
   await expect(portrait).toHaveAttribute("alt", "Portrait of Xianhua Yu (余显华)");
 
   await expect(page.locator(".research-identity")).toHaveText(
-    "My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking. Across these areas, I develop and apply wireless AI and learning-driven signal processing methods."
+    "I develop signal processing and learning methods for low-power wireless sensing and communication, from backscatter tags to low-altitude networks."
   );
   await expect(page.locator(".research-methodology")).toHaveText("Methodological Focus: Wireless AI and Learning-Driven Signal Processing");
   await expect(page.locator(".profile .more-info p")).toHaveText([
@@ -112,9 +111,12 @@ test("homepage research positioning and office location are consistent", async (
   expect(addressLines).toEqual([1, 1, 1]);
 
   const homepageNews = await page.locator(".news tr").allInnerTexts();
-  await page.goto("/news/", { waitUntil: "networkidle" });
+  await page.getByRole("link", { name: "View all news" }).click();
+  await expect(page).toHaveURL(/\/news\/$/);
   const archiveNews = await page.locator(".news tr").allInnerTexts();
-  expect(homepageNews).toEqual(archiveNews.slice(0, 9));
+  expect(homepageNews).toHaveLength(3);
+  expect(archiveNews.length).toBeGreaterThan(homepageNews.length);
+  expect(homepageNews).toEqual(archiveNews.slice(0, 3));
 
   const novemberNews = page.locator(".news tr").filter({ hasText: "Nov 2025" });
   await expect(novemberNews).toHaveCount(1);
@@ -197,6 +199,9 @@ test("CV desktop date grid keeps labels and content aligned", async ({ page }) =
   await expect(contactCard.locator('a[href="https://xian-hua.github.io/"]')).toHaveCount(0);
 
   await expect(page.getByRole("heading", { name: "Professional Service", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Teaching", exact: true }).locator("..")).toContainText(
+    "Prepared the syllabus for Introduction to Artificial Intelligence-A (人工智能导引 A), March 2026."
+  );
   await expect(page.getByRole("heading", { name: "Selected Professional Service", exact: true })).toHaveCount(0);
   await expect(page.locator(".cv-professional-service li")).toHaveText(
     "Co-organizer, 2025 Guangdong Graduate Academic Forum sub-forum on “Frontiers of Large Models and Storage Systems.”"
@@ -262,16 +267,33 @@ test("CV mobile timeline stacks without horizontal overflow", async ({ page }) =
   await expect(page.locator(".cv-funding-list")).toContainText("面向无源物联网的XXX研究");
   await expect(page.locator(".cv-funding-list")).toContainText("面向环境散射通信的XXX研究");
 });
-test("heading levels do not skip within primary content", async ({ page }) => {
+test("CV contact information fits a 320px screen", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.goto("/cv/");
+  const office = page.locator(".table-cv tr").filter({ hasText: "Room 1004-2" });
+  const label = await office.locator("td").first().boundingBox();
+  const address = await office.locator("td").last().boundingBox();
+  expect(label.y + label.height).toBeLessThanOrEqual(address.y);
+  expect(await page.locator(".cv-location-nowrap").evaluateAll((lines) => lines.every((line) => line.scrollWidth <= line.clientWidth))).toBe(true);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320);
+});
+
+test("public routes have a complete heading outline and readable search metadata", async ({ page }) => {
   for (const route of routes) {
     await page.goto(route, { waitUntil: "networkidle" });
-    const levels = await page
-      .locator("main h1, main h2, main h3, main h4, main h5, main h6")
-      .evaluateAll((headings) =>
-        headings.filter((heading) => heading.getClientRects().length > 0).map((heading) => Number(heading.tagName.slice(1)))
-      );
+    const main = page.getByRole("main");
+    await expect(main.getByRole("heading", { level: 1 })).toHaveCount(1);
+    const levels = await main.getByRole("heading").evaluateAll((headings) => headings.map((heading) => Number(heading.tagName.slice(1))));
+    expect(levels[0]).toBe(1);
     for (let index = 1; index < levels.length; index += 1) {
       expect(levels[index] - levels[index - 1], `${route}: heading level jump`).toBeLessThanOrEqual(1);
     }
+    const schema = page.locator('script[type="application/ld+json"]');
+    await expect(schema).toHaveCount(1);
+    const data = JSON.parse(await schema.textContent());
+    const description = await page.locator('meta[name="description"]').getAttribute("content");
+    expect(description.length).toBeGreaterThan(0);
+    expect(data.description).toBe(description);
+    expect(data.url).toBe(new URL(route, "https://xian-hua.github.io").href);
   }
 });

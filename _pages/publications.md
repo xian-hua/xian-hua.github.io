@@ -11,6 +11,8 @@ For a complete and up-to-date list of publications, please visit my [Google Scho
 
 <div class="publications">
 
-{% bibliography %}
+{% site_bibliography %}
 
 </div>
+
+<script defer src="{{ '/assets/js/publication-bib.js' | relative_url }}"></script>

@@ -21,33 +21,36 @@ module SiteRenderFixes
     page.output.sub!(/<meta property="og:description" content="[^"]*">/m, %(<meta property="og:description" content="#{escaped}">))
     page.output.sub!(/<meta name="twitter:description" content="[^"]*">/m, %(<meta name="twitter:description" content="#{escaped}">))
 
-    page.output.gsub!(%r{<script type="application/ld\+json">(.*?)</script>}m) do |script|
+    page.output.gsub!(%r{<script type="application/ld\+json">(.*?)</script>}m) do
       json = JSON.parse(Regexp.last_match(1))
       json["description"] = description
-      %(<script type="application/ld+json">\n#{JSON.pretty_generate(json)}\n</script>)
-    rescue JSON::ParserError
-      script
+      serialized = JSON.generate(json).gsub("<") { '\u003c' }
+      %(<script type="application/ld+json">#{serialized}</script>)
     end
   end
 
-  def add_cv_service(page)
-    items = Array(page.data["professional_service"])
-    return if items.empty?
-
-    list = items.map { |item| "<li>#{CGI.escapeHTML(item)}</li>" }.join
-    section = <<~HTML
-      <a class="anchor" id="professional-service"></a>
-      <div class="card mt-3 p-3 cv-professional-service">
-        <h3 class="card-title font-weight-medium">Professional Service</h3>
-        <ul class="card-text font-weight-light">#{list}</ul>
-      </div>
-    HTML
-
+  def add_cv_sections(page)
     article_end = page.output.rindex("</article>")
     return if article_end.nil?
 
     container_end = page.output.rindex("</div>", article_end)
-    page.output.insert(container_end, section) unless container_end.nil?
+    return if container_end.nil?
+
+    sections = { "teaching" => "Teaching", "professional_service" => "Professional Service" }.filter_map do |key, title|
+      items = Array(page.data[key])
+      next if items.empty?
+
+      id = key.tr("_", "-")
+      list = items.map { |item| "<li>#{CGI.escapeHTML(item)}</li>" }.join
+      <<~HTML
+        <a class="anchor" id="#{id}"></a>
+        <div class="card mt-3 p-3 cv-#{id}">
+          <h2 class="card-title font-weight-medium">#{title}</h2>
+          <ul class="card-text font-weight-light">#{list}</ul>
+        </div>
+      HTML
+    end
+    page.output.insert(container_end, sections.join)
   end
 end
 
@@ -103,7 +106,7 @@ Jekyll::Hooks.register :pages, :post_render do |page|
     page.output.gsub!(/(<h3[^>]*>)Projects(<\/h3>)/, '\1Research Funding\2')
     page.output.sub!("<b>Location</b>", "<b>Office</b>")
 
-    SiteRenderFixes.add_cv_service(page)
+    SiteRenderFixes.add_cv_sections(page)
     page.output.gsub!(/<h3([^>]*class="[^"]*card-title[^"]*"[^>]*)>/, '<h2\1>')
     page.output.gsub!("</h3>", "</h2>")
     page.output.gsub!(/<h6([^>]*)>/, '<div\1>')
@@ -196,9 +199,50 @@ Jekyll::Hooks.register :pages, :post_render do |page|
         }
       }
 
-      .cv-professional-service ul {
+      .cv-teaching ul, .cv-professional-service ul {
         margin-bottom: 0;
         padding-left: 1.2rem;
+      }
+
+      @media screen and (max-width: 360px) {
+        .cv .table-cv, .cv .table-cv tbody {
+          display: block;
+          width: 100%;
+        }
+
+        .cv .table-cv tr {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          margin-bottom: 0.5rem;
+        }
+
+        .cv .table-cv td {
+          min-width: 0;
+          padding: 0;
+          width: auto;
+        }
+      }
+
+      @media print {
+        body { padding: 0 !important; }
+        body > header, nav, footer, #back-to-top { display: none !important; }
+        [role="main"] { max-width: none; margin: 0 !important; padding: 0 !important; }
+        .post-header { margin: 0; }
+        .post-title { font-size: 24pt; }
+        .cv, .cv table { font-size: 10.5pt; }
+        .cv .card {
+          box-shadow: none !important;
+          border: 0;
+          margin: 0.32rem 0 !important;
+          padding: 0 !important;
+        }
+        .cv .card-title { font-size: 16pt; margin: 0 0 0.35rem; break-after: avoid; }
+        .cv .card-text { margin: 0.2rem 0; }
+        .cv .font-weight-light { font-weight: 400; }
+        .cv .cv-timeline-list > .list-group-item { padding: 0.22rem 0; break-inside: avoid; }
+        .cv .cv-teaching, .cv .cv-professional-service { break-inside: avoid; }
+        .cv p { margin: 0 0 0.25rem; }
+        .cv .table-cv td { padding: 0; }
       }
     CSS
   elsif page.url == "/"
@@ -293,15 +337,37 @@ Jekyll::Hooks.register :pages, :post_render do |page|
       }
 
       @media (max-width: 576px) {
+        .post > article {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .post > article > .clearfix { display: contents; }
+        .post > article > .clearfix::after { content: none; }
+
         .profile.float-right {
+          align-items: start;
+          display: grid;
           float: none !important;
-          margin: 0 auto 1.25rem;
-          max-width: 280px;
+          gap: 1rem;
+          grid-template-columns: clamp(72px, 25vw, 96px) minmax(0, 1fr);
+          margin: 0 0 1.25rem;
+          max-width: none;
+          order: -1;
           width: 100%;
         }
 
+        .profile figure, .profile .more-info { margin: 0; }
+
         .about-contact-line {
           gap: 0.25rem 1rem;
+          margin: 0.2rem 0 0.65rem;
+          order: -3;
+        }
+
+        .research-identity {
+          margin: 0 0 1rem;
+          order: -2;
         }
       }
     CSS
@@ -311,6 +377,32 @@ Jekyll::Hooks.register :pages, :post_render do |page|
         color: var(--global-text-color);
         font-weight: 500;
         opacity: 0.72;
+      }
+
+      .publications .links button.bibtex {
+        background: transparent;
+        border: 1px solid var(--global-text-color);
+        color: var(--global-text-color);
+        cursor: pointer;
+        margin-left: 0;
+        padding: 0.25rem 1rem;
+      }
+
+      .publications .links button.bibtex:hover {
+        border-color: var(--global-theme-color);
+        color: var(--global-theme-color);
+      }
+
+      .publications button.bibtex:focus-visible {
+        outline: 2px solid var(--global-theme-color);
+        outline-offset: 2px;
+      }
+
+      .publications div.bibtex pre {
+        font-size: 0.875rem;
+        line-height: 1.4;
+        overflow-x: auto;
+        padding: 0.625rem;
       }
     CSS
   end

@@ -22,8 +22,6 @@ social: false
 
 announcements:
   enabled: false
-  scrollable: true
-  limit: 8
 
 latest_posts:
   enabled: false
@@ -34,7 +32,7 @@ latest_posts:
   <a class="about-contact-item" href="https://scholar.google.com/citations?user=mR4CJ4IAAAAJ" target="_blank" rel="external noopener">Google Scholar</a>
 </div>
 
-<p class="research-identity">My research develops signal processing and communication methods for resource-efficient intelligent wireless systems. My current interests include ambient IoT and backscatter communications, semantic communications, and low-altitude intelligent networking. Across these areas, I develop and apply wireless AI and learning-driven signal processing methods.</p>
+<p class="research-identity">I develop signal processing and learning methods for low-power wireless sensing and communication, from backscatter tags to low-altitude networks.</p>
 
 ## About
 
@@ -48,18 +46,18 @@ I am a tenure-track Associate Professor in the School of Electrical Engineering 
 
 <p class="research-methodology"><strong>Methodological Focus:</strong> Wireless AI and Learning-Driven Signal Processing</p>
 
-## [News](/news/)
+## News
 
 <div class="news">
-  <div class="table-responsive" style="max-height: 60vw">
-    <table class="table table-sm table-borderless">
-      {% assign recent_news = site.news | reverse %}
-      {% for item in recent_news limit: 9 %}
-        <tr>
-          <th scope="row" style="width: 20%">{{ item.date | date: '%b %Y' }}</th>
-          <td>{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}</td>
-        </tr>
-      {% endfor %}
-    </table>
-  </div>
+  <table class="table table-sm table-borderless">
+    {% assign recent_news = site.news | reverse %}
+    {% for item in recent_news limit: 3 %}
+      <tr>
+        <th scope="row" style="width: 20%">{{ item.date | date: '%b %Y' }}</th>
+        <td>{{ item.content | remove: '<p>' | remove: '</p>' | emojify }}</td>
+      </tr>
+    {% endfor %}
+  </table>
 </div>
+
+[View all news]({{ '/news/' | relative_url }})
