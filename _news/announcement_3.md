@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One conference paper has been accepted by an **IEEE ICC workshop**.
+An **IEEE ICC workshop** accepted our paper “Lending a Hand: Cooperative Active–Passive Uplink Offloading for Low-Power MEC Networks” for presentation.

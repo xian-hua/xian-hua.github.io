@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One journal paper has been accepted by **IEEE Transactions on Communications**.
+**IEEE Transactions on Communications** accepted our paper “Movable Antenna-Aided Wireless Systems: Concurrent or Cumulative Movement?” for publication.

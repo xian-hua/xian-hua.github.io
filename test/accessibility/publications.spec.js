@@ -44,19 +44,22 @@ for (const width of [1366, 390]) {
     await page.screenshot({ path: test.info().outputPath(`publications-${width}.png`), fullPage: true });
   });
 
-  test(`publication news links at ${width}px`, async ({ page }) => {
+  test(`news entries display as plain text at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     for (const route of ["/", "/news/"]) {
       await page.goto(route, { waitUntil: "networkidle" });
-      const wclNews = page.locator(".news tr").filter({ hasText: "Congratulations to Zhenguan!" }).first();
-      await expect(wclNews.locator("th")).toHaveText("Aug 2026");
-      await expect(wclNews.locator('a[href="https://doi.org/10.1109/LWC.2026.3729739"]')).toBeVisible();
-      await expect(page.locator('.news a[href*="VTC2026-Accepted-Papers.pdf"]')).toHaveText(
-        "“UAV-Assisted Anti-Jamming Relay Design for Reliable Federated Learning in Mobile Networks”"
-      );
+      const news = page.locator(".news");
+      await expect(news.locator("td").first()).toBeVisible();
+      await expect(news.locator("td a")).toHaveCount(0);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       if (route === "/") {
         await page.screenshot({ path: test.info().outputPath(`home-${width}.png`), fullPage: true });
+      } else {
+        const wcl = news.locator("tr").filter({ hasText: "Block-Correlation-Based Outage Analysis" });
+        await expect(wcl.locator("th")).toHaveText("Aug 2026");
+        await expect(news).toContainText("UAV-Assisted Anti-Jamming Relay Design for Reliable Federated Learning in Mobile Networks");
+        const travelGrant = news.locator("tr").filter({ hasText: "Conference Travel Grant" });
+        await expect(travelGrant.locator("th")).toHaveText("Nov 2026");
       }
     }
   });

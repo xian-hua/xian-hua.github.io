@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One journal paper has been accepted by **IEEE Communications Magazine**.
+**IEEE Communications Magazine** accepted our paper “Phase Shift Information Compression in IRS-Aided Wireless Systems: Challenges and Opportunities” for publication.

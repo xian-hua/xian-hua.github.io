@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One conference paper has been accepted by **IEEE ICDCS**.
+**IEEE ICDCS** accepted our paper “Fast Semantic Retrieval with Balanced Load and Implicit Privacy in Large-Scale Internet of Agents” for presentation.
