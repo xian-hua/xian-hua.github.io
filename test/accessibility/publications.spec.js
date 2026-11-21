@@ -26,9 +26,11 @@ for (const width of [1366, 390]) {
 
     const vtc = page.locator("#yang2026uav");
     await expect(vtc).toHaveCount(1);
-    await expect(vtc.locator(".periodical").last()).toHaveText("Accepted; listed in the official conference program");
-    await expect(vtc.locator('a[href="https://icons-research-group.github.io/VTC2026-Spring-DTPI/"]')).toBeVisible();
-    await expect(vtc.locator('a[href*="doi.org"]')).toHaveCount(0);
+    await expect(vtc.locator(".periodical").first()).toContainText("2026 IEEE 103rd Vehicular Technology Conference (VTC2026-Spring)");
+    await expect(vtc.locator('a[href="https://doi.org/10.1109/VTC2026-Spring68026.2026.11757769"]')).toBeVisible();
+    await vtc.locator("a.bibtex").click();
+    await expect(vtc.locator("div.bibtex")).toContainText("pages = {1--6}");
+    await vtc.locator("a.bibtex").click();
 
     const tmc = page.locator("#qin2026fairness");
     await expect(tmc.locator(".periodical").first()).toContainText("Nov 2026");
