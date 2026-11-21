@@ -53,6 +53,7 @@ for (const width of [1366, 390]) {
       const news = page.locator(".news");
       await expect(news.locator("td").first()).toBeVisible();
       await expect(news.locator("td a")).toHaveCount(0);
+      await expect(news.getByText("IEEE Journal on Selected Areas in Communications", { exact: true })).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       if (route === "/") {
         await page.screenshot({ path: test.info().outputPath(`home-${width}.png`), fullPage: true });
@@ -60,8 +61,8 @@ for (const width of [1366, 390]) {
         const wcl = news.locator("tr").filter({ hasText: "Block-Correlation-Based Outage Analysis" });
         await expect(wcl.locator("th")).toHaveText("Aug 2026");
         await expect(news).toContainText("UAV-Assisted Anti-Jamming Relay Design for Reliable Federated Learning in Mobile Networks");
-        const travelGrant = news.locator("tr").filter({ hasText: "Conference Travel Grant" });
-        await expect(travelGrant.locator("th")).toHaveText("Nov 2026");
+        const conferencePaper = news.locator("tr").filter({ hasText: "2026 IEEE Global Communications Conference" });
+        await expect(conferencePaper.locator("th")).toHaveText("Aug 2026");
       }
     }
   });

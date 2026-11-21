@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our project on passive IoT (面向无源物联网的XXX研究) was awarded the **National Natural Science Foundation of China (NSFC) Young Scientists Fund (Category C)**. Principal Investigator: Xianhua Yu; project period: Jan. 2027–Dec. 2029.
+Our project on passive Internet of Things systems (面向无源物联网的XXX研究) received a **Young Scientists Fund (Category C)** grant from the **National Natural Science Foundation of China**. Xianhua Yu is the principal investigator for the January 2027–December 2029 project.

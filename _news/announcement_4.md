@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper “UAV-Assisted Anti-Jamming Relay Design for Reliable Federated Learning in Mobile Networks” has been accepted for presentation at an **IEEE VTC-Spring workshop**.
+Our paper “UAV-Assisted Anti-Jamming Relay Design for Reliable Federated Learning in Mobile Networks” has been accepted for presentation at a workshop of the **103rd IEEE Vehicular Technology Conference**.
