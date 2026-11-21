@@ -1,0 +1,1 @@
+document.querySelectorAll(".publications button.bibtex").forEach(t=>{const e=document.getElementById(t.getAttribute("aria-controls"));t.addEventListener("click",()=>{e.hidden=!e.hidden,t.setAttribute("aria-expanded",String(!e.hidden))})});
