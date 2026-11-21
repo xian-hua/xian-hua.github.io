@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-**IEEE Communications Magazine** accepted our paper “Phase Shift Information Compression in IRS-Aided Wireless Systems: Challenges and Opportunities” for publication.
+Our paper “Phase Shift Information Compression in IRS-Aided Wireless Systems: Challenges and Opportunities” has been accepted for publication in **IEEE Communications Magazine**.

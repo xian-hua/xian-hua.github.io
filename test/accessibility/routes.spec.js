@@ -125,7 +125,7 @@ test("homepage research positioning and office location are consistent", async (
   const wclNews = page.locator(".news tr").filter({ hasText: "Block-Correlation-Based Outage Analysis" });
   await expect(wclNews.locator("th")).toHaveText("Aug 2026");
   await expect(wclNews.locator("td")).toHaveText(
-    "IEEE Wireless Communications Letters accepted our paper “Block-Correlation-Based Outage Analysis for FAS-Assisted Wireless Powered Communication” for publication. Congratulations to Zhenguan!"
+    "Our paper “Block-Correlation-Based Outage Analysis for FAS-Assisted Wireless Powered Communication” has been accepted for publication in IEEE Wireless Communications Letters. Congratulations to Zhenguan!"
   );
 });
 

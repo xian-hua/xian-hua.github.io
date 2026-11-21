@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-**IEEE GLOBECOM 2026** accepted our paper for presentation. Congratulations to Zhenguan!
+Our paper has been accepted for presentation at **IEEE GLOBECOM 2026**. Congratulations to Zhenguan!

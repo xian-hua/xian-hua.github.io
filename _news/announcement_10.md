@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-**IEEE Wireless Communications Letters** accepted our paper “Block-Correlation-Based Outage Analysis for FAS-Assisted Wireless Powered Communication” for publication. Congratulations to Zhenguan!
+Our paper “Block-Correlation-Based Outage Analysis for FAS-Assisted Wireless Powered Communication” has been accepted for publication in **IEEE Wireless Communications Letters**. Congratulations to Zhenguan!
